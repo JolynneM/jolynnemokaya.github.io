@@ -1,0 +1,17 @@
+header:
+  - title:      Advanced Bioinformatics Course for Bacterial Pathogens
+    url:        /Bioinformatics_Workshop.html
+    children:
+      - title:  Course Content
+        url:    /course_content.html
+      - title:  Structure
+        url:    /docs/en/structure
+  - title:      GitHub
+    url:        https://github.com/JolynneM
+  - title:      Blogs
+    url:        /Blogs.html
+
+
+
+     
+      
