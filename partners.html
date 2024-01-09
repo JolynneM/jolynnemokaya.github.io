@@ -1,0 +1,109 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidepanel  {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  height: 300px;
+  top: 20;
+  left: 0;
+  background-color: #191970;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidepanel a:hover {
+  color: #191970;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+.openbtn {
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #191970;
+  color: #818181;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color:#444;
+}
+</style>
+</head>
+<body>
+
+<div id="mySidepanel" class="sidepanel">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+  <a href="crl.html">Central Research Laboratory,KIMS</a>
+ <a href="uniandes.html">Universidad de los Andes</a>
+ <a href="mrcgambia.html">The MRC Unit The Gambia at LSHTM</a>
+ <a href="pakistan.html">Hacettepe University</a>
+
+</div>
+<button class="openbtn" onclick="openNav()">☰ Content</button>   
+
+<script>
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+</script>
+   
+</body>
+</html>
+
+<br>
+
+<br>
+
+<p align="left">This advanced bioinformatics workshops were  delivered in
+partnership with the following institutions:
+<ul style="padding-left: 30px">
+<li>Central Research Laboratory, Kempegowda Institute of Medical Sciences</li>
+<li>Universidad de los Andes</li>
+<li>The Medical Research Council Unit The Gambia at LSTHM</li>
+<li>Hacettepe University</li>
+<li>Lahore University of Management Sciences</li>
+<li>The Agha Khan University</li>
+</ul>
+</p>
+
+<p align="left">Click on the content icon for information on the workshops delivered in each of these institutions.<p>
+
+
+<p align="center"><img width="800" height="450" alt="logo"
+src="assets/images/logo/partners.png"></p>
+

@@ -1,0 +1,576 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+<br>
+<br>
+
+<p align=“justify”><I>Before you being this section, navigate to the <a 
+  href="https://drive.google.com/drive/folders/1XfsGmabHH84ZEscb5_WEVpzgvIJ7lHft?usp=share_link">variant_calling</a> 
+  folder. You will use this folder
+  and its contents to learn and practice this section.</p></I>
+
+<br>
+
+<h4>Overview</h4>
+<p align="justify">In this section, we will learn how to map sequence reads to a reference sequence and 
+then identify the variants (both single nucleotide polymorphisms (SNPs) and small insertions and deletions 
+(indels)) in the sequence data. We will then use the variants identified to generate a pseudogenome which 
+is created by replacing the bases in reference genome by variants identified at corresponding 
+positions.</p>
+
+<h4>Tool(s)</h4>
+<p align="justify">We will use the tool Snippy which is an integrated pipeline that maps reads to a 
+reference genome and finds variants between the reference genome and the sequence reads. It will use as 
+many CPUs as you can give it on a single computer. It is designed with speed in mind, and produces a 
+consistent set of output files in a single folder.</p>
+
+<p align="justify">You can snippy from a 
+docker repository using the commands:</p>
+
+<code><b>docker pull staphb/snippy</code></b>
+<br>
+
+<h4>Alignment</h4>
+<p align="justify">Snippy requires only three inputs:
+<ul style="padding-left: 50px">
+<li>reference genome in FASTA format,</li>
+<li>sequence read file (s) in FASTQ format,</li>
+<li>a folder to put in the results</li>
+</ul>
+</p>
+
+<p align="justify">The following command is used to run snippy: </p>
+
+<code><b>docker_run staphb/snippy snippy --outdir GPSC46_folder --R1 17150_4#79_1.fastq.gz --R2 
+17150_4#79_2.fastq.gz --ref Reference_sequence_GPSC46.fa --cpus 2 --ram 2 --force --quiet</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of these commands are as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b> is a function to start a container. The 
+function includes the following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To 
+understand the docker_run function read the section [Data, Tools and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/snippy:</b> is the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b> snippy:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--outdir:</b> specified the output directory which is 
+GPSC46_folder</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--R1:</b> specifies the first read which is 
+17150_4#79_1.fastq.gz</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--R2:</b> specifies the first read which is 
+17150_4#79_2.fastq.gz</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--ref:</b> specifies the reference genome which is 
+Reference_sequence_GPSC46.fa</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--cpus:</b> specifies maximum number of CPU cores to use 
+= 2</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--ram:</b> specifies that the RAM is kept under 2 GB</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--force:</b> force overwrite of existing output 
+folder</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--quiet:</b> no screen output</p>
+
+<p align="justify">There should now be a new folder called <b>GPSC46_folder</b>. Now lets 
+<code><b>cd</code></b> to this folder and list <code><b>ls -alh</code></b> the content of the directory to 
+check we have our new files, and also check out their sizes.</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/variant_1.png"></p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>A description of the output files are as 
+follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>ref.fa:</b> FASTA version/copy of the reference</p>
+<p style="font-size: 12px; padding-left: 30px"><b> ref.ra.fai:</b> Index for the reference file</p>
+<p style="font-size: 12px; padding-left: 30px"><b> snps.aligned.fa:</b> A version of the reference but 
+with (-) at position with depth=0 and N for 0 < depth < --mincov (does not have variants)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.bam:</b> The alignments in BAM format. Includes 
+unmapped, multimapping reads. Excludes duplicates.</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.bam.bai:</b> Index for the .bam file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.bed:</b> The variants in Browser Extensible Data 
+(BED) format</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.consensus.fa:</b> A version of the reference genome 
+with which contains all contains all high quality variants</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.consensus.subs.fa:</b> A version of the reference 
+genome which contains only high quality SNPs (no INDELS)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.tab:</b> A simple tab-separated summary of all the 
+variants</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.csv:</b> A comma-separated version of the .tab 
+file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.txt:</b> Tab-separated columnar list of 
+alignment/core-size statistics</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.filt.vcf:</b> The filtered variant calls from 
+Freebayes</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.raw.vcf:</b> The unfiltered variant calls from 
+Freebayes</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.vcf:</b> Multi-sample VCF file with genotype GT 
+tags for all discovered alleles</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.vcf.gz:</b> Compressed .vcf file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.vcf.gz.csi:</b> Index for the .vcf.gz via bcftools 
+index</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.gff:</b> The variants in GFF3 format</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.html:</b> A HTML version of the .tab file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>snps.log:</b> A log file with the commands run and their 
+outputs</p>
+
+<p align="justify">Snippy has done a number of things. You can examine the log file to see exactly what 
+snippy has done. So type:</p>
+
+<code><b>less snps.log</code></b>
+<br>
+
+<p align="justify">The output is as shown in the table below:</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/variant_2.png"></p>
+
+<p align="justify">Press "q" to exit. </p> 
+
+<p align="justify">You can also use <code><b>grep</code></b> to retrieve the relevant lines for each 
+command from the log file. </p>
+
+<p align="justify">For example: To see the exact snippy command you entered earlier type the command</p>
+
+<code><b>grep outdir snps.log</code></b>
+<br>
+
+<p align="justify">You will get this output</p>
+
+<p align="center"><img width="400" height="100" alt="logo"
+src="assets/images/logo/variant_3.png"></p>
+
+<code><b>grep bwa snps.log</code></b>
+<br>
+
+<p align="justify">You will get this output</p>
+
+<p align="center"><img width="400" height="150" alt="logo"
+src="assets/images/logo/variant_4.png"></p>
+
+<p style="font-size: 12px; padding-left: 30px">The command "bwa mem  -Y -M -R 
+'@RG\tID:GPSC46_folder\tSM:GPSC46_folder' -t 2 reference/ref.fa /data/17150_4#79_1.fastq.gz 
+/data/17150_4#79_2.fastq.gz | samclip --max 10 --ref reference/ref.fa.fai | samtools sort -n -l 0 -T /tmp 
+--threads 0 -m 1000M | samtools fixmate -m --threads 0 - - | samtools sort -l 0 -T /tmp --threads 0 -m 
+1000M | samtools markdup -T /tmp --threads 0 -r -s - - > snps.bam"   is a combination of several commands 
+combined using pipes (|). A description of this command is as follows:</p>
+<p style="font-size: 12px; padding-left: 30px"><b>bwa mem  -Y -M -R 
+'@RG\tID:GPSC46_folder\tSM:GPSC46_folder' -t 2 reference/ref.fa /data/17150_4#79_1.fastq.gz 
+/data/17150_4#79_2.fastq.gz:</b> This command uses bwa to map the sequence reads to the reference genome 
+using bwa mem.</p>
+<p style="font-size: 12px; padding-left: 30px"><b> samclip --max 10 --ref reference/ref.fa.fai:</b> This 
+command uses samtools to clip/remove  unaligned reads.</p>
+<p style="font-size: 12px; padding-left: 30px"><b> samtools sort -n -l 0 -T /tmp --threads 0 -m 1000M:</b> 
+This command tells samtools to fill in mate coordinates and insert size fields.</p>
+<p style="font-size: 12px; padding-left: 30px"><b>samtools fixmate -m --threads 0 - -:</b> This command 
+tells samtools to fill in mate coordinates and insert size fields.</p>
+<p style="font-size: 12px; padding-left: 30px"><b>samtools sort -l 0 -T /tmp --threads 0 -m 1000M:</b> 
+This command tells samtools to sort based on chromosome number and coordinates</p>
+<p style="font-size: 12px; padding-left: 30px"><b>samtools markdup -T /tmp --threads 0 -r -s - - :</b> 
+This command uses samtools  to remove all the duplicates and also print some basic statistics about the 
+results file. </p>
+<p style="font-size: 12px; padding-left: 30px"><b>> snps.bam:</b> snps.bam is the outputfile</p>
+
+<p align="justify">To see samtools processing type the command</p>
+
+<code><b>grep samtools snps.log</code></b>
+<br>
+
+<p align="justify">You will get this output</p>
+
+<p align="center"><img width="400" height="150" alt="logo"
+src="assets/images/logo/variant_5.png"></p>
+
+<p style="font-size: 12px; padding-left: 30px">The command "bwa mem  -Y -M -R 
+'@RG\tID:GPSC46_folder\tSM:GPSC46_folder' -t 2 reference/ref.fa /data/17150_4#79_1.fastq.gz 
+/data/17150_4#79_2.fastq.gz | samclip --max 10 --ref reference/ref.fa.fai | samtools sort -n -l 0 -T /tmp 
+--threads 0 -m 1000M | samtools fixmate -m --threads 0 - - | samtools sort -l 0 -T /tmp --threads 0 -m 
+1000M | samtools markdup -T /tmp --threads 0 -r -s - - > snps.bam"   has been explained above. </p>
+
+<p align="justify">To see freebayes processing type the command</p>
+
+<code><b>grep freebayes snps.log</code></b>
+<br>
+
+<p align="justify">You will get this output</p>
+
+<p align="center"><img width="400" height="100" alt="logo"
+src="assets/images/logo/variant_6.png"></p>
+
+<p style="font-size: 12px; padding-left: 30px">This command uses <b>freebayes</b> to identify potential 
+variants with coordinates in variant call file (VCF) format</p>
+
+<p align="justify">To see bcftools processing type the command</p>
+
+<code><b>grep bcftools snps.log</code></b>
+<br>
+
+<p align="justify">You will get this output</p>
+
+<p align="center"><img width="400" height="120" alt="logo"
+src="assets/images/logo/variant_7.png"></p>
+
+<p style="font-size: 12px; padding-left: 30px">The command <b>bcftools view --include 'FMT/GT="1/1" && 
+QUAL>=100 && FMT/DP>=10 && (FMT/AO)/(FMT/DP)>=0' snps.raw.vcf  | vt normalize-r reference/ref.fa - | 
+bcftools annotate --remove 
+'^INFO/TYPE,^INFO/DP,^INFO/RO,^INFO/AO,^INFO/AB,^FORMAT/GT,^FORMAT/DP,^FORMAT/RO,^FORMAT/AO,^FORMAT/QR,^FORMAT/QA,^FORMAT/GL' 
+> snps.filt.vcf </b> uses bcftools to filter the variants identified above using fixed thresholds</p>
+
+<p style="font-size: 12px; padding-left: 30px">The command <b>bcftools consensus --sample GPSC46_folder -f 
+reference/ref.fa -o snps.consensus.fa snps.vcf.gz</b> uses <b>bcftools</b> to create a pseudogenome by 
+replacing the bases in reference genome by the filtered substitutions(SNPs) identified above.</p>
+
+<h4>Viewing output</h4>
+
+<p align="justify"><b>snps.vcf </b></p>
+
+<code><b>head -n30 snps.vcf</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>This command prints the first 30 lines of the snps.vcf 
+file.</b></p>
+<p style="font-size: 12px; padding-left: 30px">The first 27 lines here are ‘headers’ and contain 
+information about what has been done to call the variants, and helps you to interpret what different 
+columns mean. All these lines begin with **"#"**</p>
+<p style="font-size: 12px; padding-left: 30px">The last 3 lines are individual variants identified, one 
+per line. Variants columns are labelled **#CHROM POS ID REF ALT QUAL FILTER INFO FORMAT 
+GPSC46_folder**</p>
+
+<p align="justify">You will get this output</p>
+
+<p align="center"><img width="400" height="120" alt="logo"
+src="assets/images/logo/variant_7.png"></p>
+
+<p align="justify"><b>snps.tab</b></p>
+
+<p align="justify">We can view a slightly easier summary of these variants in the snps.tab file</p>
+
+<code><b>head -n5 snps.tab</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px">This command prints the first 5 lines of the snps.vcf file. 
+In this file, we have not provided gene information, so only the first 6 columns are relevant.</p>
+
+<p align="justify">You will get this output</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/variant_8.png"></p>
+
+<p align="justify"><b>Pseudogenomes</b></p>
+
+<p align="justify">Snippy has also created a fasta file with our pseudosequence genome which is made by 
+replacing the reference bases with the snps identified.</p>
+
+<code><b>head snps.consensus.subs.fa</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px">This command prints the first few lines of the file 
+"snps.consensus.subs.fa".</p>
+
+<p align="justify">You will get this output</p>
+
+<p align="center"><img width="400" height="200" alt="logo"
+src="assets/images/logo/variant_9.png"></p>
+
+<p align="justify"; style="color:grey"><i><b>Practice exercise</b></i></p>
+
+<p align="justify"; style="color:grey"><i>Now let us perform variant calling for a second genome.</i></p>
+
+<p align="justify"; style="color:grey"><i>1. There are two additional fastq files in the directory 
+(<b>15608_3#13_1.fastq.gz</b> and <b>15608_3#13_2.fastq.gz</b>). Now run snippy on this pair of fastqs and 
+name the output directory as “<b>GPSC46_folder2</b>”.</I></p>
+
+<p align="justify"; style="color:grey"><i>Write the code:</I></p>
+
+<p align="justify"; style="color:grey"><i>2. Examine the results of snippy in your new folder using grep, 
+ls and less</I></p>
+<br>
+<h4>Handling multiple genomes - creating multiple sequence alignment</h4>
+
+<p align="justify">Running a set of isolate sequences (reads or contigs) against the same reference, you 
+can use the <b><I>snippy-multi</b></I> script. </p>
+
+<p align="justify">Navigate to the <b>multiple</b> folder and explore its contents. To execute the 
+snippy-multi script, you will need:
+<ul style="padding-left: 50px">
+<li>Paired end reads (single-end reads or assembled contigs)</li>
+<li>Tab separated input file (which contains a list of the forward and reverse reads in the following 
+format: ID, names of R1 reads and names of R2 reads)</li>
+<li>Reference sequence</li>
+</ul>
+</p>
+
+<p align="justify">Explore the tab separated input file; it should have the following format</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/variant_10.png"></p>
+
+<p align="justify">Now lets us use <b><I>snippy-multi</I></b> to generate a multiple sequence alignment 
+file. </p>
+
+<p align="justify">First run this command to generate an output script</p>
+
+<code><b>docker_run staphb/snippy snippy-multi list.txt --ref Reference_sequence_GPSC46.fa --cpus 2 > 
+runme.sh</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this command is as follows</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b> is a function to start a container. The 
+function includes the following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To 
+understand the docker_run function read the section [Data, Tools and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/snippy:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b> list.txt:</b> Tab separated input file (which contains 
+a list of the forward and reverse reads in the following format: ID, names of R1 reads and names of R2 
+reads)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--ref:</b> specifies the reference genome which is 
+Reference_sequence_GPSC46.fa</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--cpus:</b> specifies maximum number of CPU cores to use 
+= 2</p>
+<p style="font-size: 12px; padding-left: 30px"><b>> runme.sh:</b> is the output script</p>
+
+<p align="justify">You will get this output</p>
+
+<p align="center"><img width="400" height="180" alt="logo"
+src="assets/images/logo/variant_11.png"></p>
+
+<p align="justify">You can check that the script makes sense by running the command:</p>
+<code><b>less runme.sh</code></b>
+<br>
+
+<p align="justify">You will get this output if the script is correct</p>
+
+<p align="center"><img width="400" height="120" alt="logo"
+src="assets/images/logo/variant_12.png"></p>
+
+<p align="justify">Now, generate the alignment by running the command:</p>
+
+<code><b>docker_run staphb/snippy sh ./runme.sh</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this command is as follows</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b> is a function to start a container. The 
+function includes the following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To 
+understand the docker_run function read the section [Data, Tools and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/snippy:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>sh:</b> is the command name of the Bourne shell, the 
+standard command language interpreter of Unix and many Unix-like operating systems, including Linux</p>
+<p style="font-size: 12px; padding-left: 30px"><b>/.runme.sh:</b> the output script in the current 
+directory (/.)</p>
+
+<p align="justify"><b>Note:</b> the tool <b><I>snippy-multi</b></I> will also run 
+<b><I>snippy-core</b></I> to generate the core genome SNP alignment files </b>core.*</b>  </p>
+
+<p align="justify">Snippy has now created a number of files, including a ‘core SNP alignment’</p>
+
+<p align="justify">Run this command to check output</p>
+
+<code><b>ls -l core.*</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this command is as follows</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>ls -l:</b> is the command for long listing all items 
+with core as prefix (core.*) </p>
+
+<p align="justify">You will get this output </p>
+
+<p align="center"><img width="400" height="120" alt="logo"
+src="assets/images/logo/variant_13.png"></p>
+
+<p align="justify"><b>Viewing output</b></p>
+
+<p align="justify">We have various files that summarise our variants, e.g., run this command to check the 
+content of some these files:</p>
+
+<code><b>head core.tab</code></b>
+<br>
+
+<p align="justify">You will get this output </p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/variant_14.png"></p>
+
+<p align="justify">And our multiple sequence alignment containing all genomes is in the file 
+(core.tull.aln). View this file: </p>
+
+<code><b>head core.full.aln</code></b>
+<br>
+
+<p align="justify">You will get this output </p>
+
+<p align="center"><img width="400" height="180" alt="logo"
+src="assets/images/logo/variant_15.png"></p>
+
+<p align="justify">This file “core.full.aln” masks sequences with low confidence in different ways, but 
+for some applications we want everything masked in the same way. Let’s change that so anything uncertain 
+is marked as ’N’ using the snipp-clean_full_aln script that comes with snippy.</p>
+
+<code><b>docker_run staphb/snippy snippy-clean_full_aln core.full.aln > clean.full.aln</code></b>
+<br>
+
+<p align="justify">View this file: </p>
+
+<code><b>head clean.full.aln</code></b>
+<br>
+
+<p align="justify">You will get this output </p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/variant_16.png"></p>
+
+<p align="justify"; style="color:grey"><i><b>Practice exercise</b></i></p>
+
+<p align="justify"; style="color:grey"><i>Now let us perform variant calling for Streptococcus agalactiae. 
+Move to the S.agalactiae folder which is in the Variant_calling folder. Run snippy on this pair of fastq 
+files (<b>20280_5#33_1.fastq.gz</b> and <b>20280_5#33_2.fastq.gz</b>) and name the output directory as 
+“<b>gbs_folder</b>”. There is a <b>multiple</b> folder within the directory - now run snippy on these reads.</I></p>
+
+<p align="justify"; style="color:grey"><i>Write the code:</I></p>
+
+<p align="justify"; style="color:grey"><i>Examine the results of snippy in your new folder using grep, ls 
+and less</I></p>
+
+<p align="justify"; style="color:grey"><i>Generate multiple sequence alignment</I></p>
+
+<p align=”left”><b>Further reading: </b><a href="https://github.com/tseemann/snippy">Snippy</a>
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+

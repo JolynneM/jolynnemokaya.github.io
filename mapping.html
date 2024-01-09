@@ -1,0 +1,493 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+<br>
+<br>
+<p align=“justify”><I>Before you being this section, navigate to the 
+  <a 
+  href="https://drive.google.com/drive/folders/1UlHvrhniA8KxxsVygqgOkkjFNsg8GIfk?usp=share_link">mapping</a> 
+  folder. You  will use this folder
+  and its contents to learn and practice this section.</p></I>
+  <br>
+
+<h4>Overview</h4>
+<p align="justify">Mapping short reads against a reference genome is typically the first step to analyze 
+such next-generation sequencing data, and it should be as accurate as possible. Because of the high number 
+of reads to handle, numerous sophisticated algorithms have been developed to tackle this problem and many 
+mapping tools exist now.</p>
+
+<p align=”left”><b>Further reading: </b><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3375638/">Mapping Reads on a Genomic Sequence: An 
+Algorithmic Overview and a Practical Comparative Analysis</a></p>
+
+<h4>Selecting a reference sequence for mapping</h4>
+<p align="justify">A single reference genome is designated to represent a species for comparative 
+analysis. A complete reference genome should be of high quality annotation and meets the highest level of 
+experimental support for structural and functional annotation.</p>
+
+<p align=”left”><b>Further reading: </b><a href="https://pubmed.ncbi.nlm.nih.gov/24316578/">RefSeq microbial genomes database: new representation 
+and annotation strategy</a></p>
+
+<p align="justify"><b>Note:</b> It is important to have in mind that although a single arbitrary reference 
+genome is a frequently used approach in microbial genomics, the choice of a reference may represent a 
+source of errors that may affect subsequent analyses such as the detection of single nucleotide 
+polymorphisms (SNPs) and phylogenetic inference.</p>
+
+<p align=”left”><b>Further reading: </b><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1008678">One is not 
+enough: On the effects of reference genome for the mapping and subsequent analyses of short-reads</a></p>
+
+<h4>Tool(s)</h4>
+
+<p align="justify">There are many tools available to align reads onto a reference sequence: tanoti, bwa, 
+bowtie2, stampy, GEM,bbMap, novoalign, to name but a few. For this section, we will be using bwa
+(Burrows-Wheeler Aligner) and samtools. You can download them from a docker repository using the 
+commands:</p>
+
+<code><b>docker pull staphb/bwa</code></b>
+<br>
+<code><b>docker pull staphb/samtools</code></b>
+
+<h4>Assessing files</h4>
+
+<p align="justify">Explore files in the mapping folder. You should see the compressed FASTQ paired end 
+read files (<b>17150_4#79_1.fastq.gz</b> and <b>17150_4#79_2.fastq.gz</b>) and also two FASTA reference 
+sequence files (<b>Reference_sequence_GPSC46.fa</b> and <b>Reference_sequence_GPSC33.fa</b>).</p>
+
+<p align="justify">We will be aligning the paired end reads to the two reference sequences in turn. The 
+reference sequences represent the GPSC33 and GPSC46 lineages of <I>Streptococcus pneumoniae</I>, and we 
+will use the alignment results to determine which lineage the reads belong to.</p>
+
+<p align=”left”><b>Further reading: </b><a href="https://pubmed.ncbi.nlm.nih.gov/31003929/">International genomic definition of pneumococcal 
+lineages, to contextualise disease, antibiotic resistance and vaccine impact</a>
+
+<p align="justify">As a quick check, count the number of lines in each of the read files and check they 
+have the same number. As these are paired end reads, there should be one read from each read pair in each 
+of the files - and hence the same number of lines (and therefore reads) in each file.</p>
+
+<code><b>gzip -cdf 17150_4#79_1.fastq.gz | wc -l</code></b>
+<br>
+<code><b>gzip -cdf 17150_4#79_2.fastq.gz | wc -l</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of these commands are as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>gzip:</b> Command to compress or uncompress files</p>
+<p style="font-size: 12px; padding-left: 30px"><b> cdf:</b> Options where <b>c</b> means writing file on 
+standard output, keeping the original files unchanged; <b>d</b> means decompress (to .fastq); and <b>f</b> 
+means forcing overwrite of output files and use of symbolic links. (Here, fastq.gz files are symbolic 
+links)</p>
+<p style="font-size: 12px; padding-left: 30px"><b> | :</b> Pipes the output .fastq file to the next 
+command</p>
+<p style="font-size: 12px; padding-left: 30px"><b>wc:</b> Command for a program called word count, by 
+providing the <b>-l</b> flag we tell word count to count the number of lines in a file.</p>
+
+<p align="center"; style="color:green"><i><b>Quiz</b></i></p>
+<p align="center"; style="color:green"><i>How many lines are in the read files 1 and 2? Are they the 
+same?</i></p>
+<p align="center"; style="color:green"><i>How many READS are in the read file 1 and 2?</i></p>
+<p align="center"; style="color:green"><i><b>Hint:</b> Think about how many lines represent a single read 
+in the FASTQ format</i></p>
+
+<p align="justify">Paired read files should always have the same number of lines/reads (the ordering of 
+the reads in each file is also critical), so if your two paired files have a different number of lines, 
+something has gone wrong (e.g., filtering/trimming went wrong and corrupted the output, or maybe files 
+from different samples are being used).</p>
+
+
+<h4>Creating an alignment</h4>
+
+<p align="justify">We will first create an index of the reference sequence file 
+“Reference_sequence_GPSC46.fa”. For large references, this can take a while but once the index is created 
+you can re-use it for multiple samples. For example, if you have 100 <I>Streptococcus pneumoniae</I> 
+samples, you only need to create the index once and you can use it for all 100 samples. </p>
+
+<p align="justify">Run the command in terminal to execute bwa:</p>
+
+<code><b>docker_run staphb/bwa bwa index Reference_sequence_GPSC46.fa</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of these commands are as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b> is a function to start a container. The 
+function includes the following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To 
+understand the docker_run function read the section [Data, Tools and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/bwa:</b> is the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b> bwa:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>index:</b> instructs bwa to index the input file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>Reference_sequence_GPSC46.fa:</b> is the input file</p>
+
+<p align="justify">If you list <code><b>ls</b></code> the content of the directory, you should now see the 
+bwa index files, they will have the prefix “Reference_sequence_GPSC46.fa” and will have extensions such as 
+.amb, .ann, .bwt, .pac, and .sa.</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/mapping_1.png"></p>
+
+<p align="justify">To align the reads to the reference sequence, type this command in terminal:</p>
+
+<code><b>docker_run staphb/bwa bwa mem Reference_sequence_GPSC46.fa 17150_4#79_1.fastq.gz 
+17150_4#79_2.fastq.gz > GPSC46bwa.sam</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of these commands are as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b> is a function to start a container. The 
+function includes the following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To 
+understand the docker_run function read the section [Data, Tools and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/bwa:</b> is the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b> bwa:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>mem:</b> tells bwa to use the mem algorithm to align the 
+read files to the reference</p>
+<p style="font-size: 12px; padding-left: 30px"><b>17150_4#79_1.fastq.gz:</b> input file of forward 
+reads</p>
+<p style="font-size: 12px; padding-left: 30px"><b>17150_4#79_2.fastq.gz:</b> input file of reverse 
+reads</p>
+<p style="font-size: 12px; padding-left: 30px"><b>Reference_sequence_GPSC46.fa:</b> is the input file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>> GPSC46bwa.sam:</b> direct (>) the alignment results 
+into the file GPSC46bwa.sam</p>
+
+<p align="justify">When bwa runs, it will print messages to your terminal screen.</p>
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/mapping_2.png"></p>
+
+<p align="justify">When bwa is finished, check that the SAM file has been created using 
+<code><b>ls</code></b></p>
+
+<p align="justify">There should now be a file <b>GPSC46bwa.sam</b> in the directory. Typically, a SAM file 
+contains a single line for each read in the data set, and this line stores the alignment results of each 
+read (reference name, alignment location, CIGAR string, the read sequence itself, quality etc..)</p>
+
+<p align="justify">SAM files are in text format. To view it, type: </p>
+
+<code><b>head GPSC46bwa.sam</code></b>
+<br>
+
+<p align="justify">You will have the following output: </p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/mapping_3.png"></p>
+
+<p align="justify"><b>Note:</b> This can take up a lot of disk space. It is good practice to convert your 
+SAM files to BAM files (Binary Alignment Map), which are compressed binary versions of the same data, and 
+can be sorted and indexed easily to make searches faster. We will use samtools to convert our SAM to BAM, 
+and sort and index the BAM file. </p>
+
+<p align="justify">To convert a sam file to a bam file, type this command in terminal:</p>
+
+<code><b>docker_run staphb/samtools samtools sort GPSC46bwa.sam -o GPSC46bwa.bam</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of these commands are as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b> is a function to start a container. The 
+function includes the following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To 
+understand the docker_run function read the section [Data, Tools and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/samtools:</b> is the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b> samtools:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>sort:</b> tells samtools to sort the SAM file 
+(GPSC46bwa.sam)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>GPSC46bwa.sam:</b> input file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>-o GPSC46bwa.bam:</b> flag for the output file called 
+GPSC46bwa.bam which is the sorted data in the BAM format </p>
+
+<p align="justify">The next step is to index the BAM file; indexing, which relies on sorted data, enables 
+faster searches downstream. Type this command in terminal:</p>
+
+<code><b>docker_run staphb/samtools samtools index GPSC46bwa.bam</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of these commands are as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b> is a function to start a container. The 
+function includes the following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To 
+understand the docker_run function read the section [Data, Tools and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/samtools:</b> is the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b> samtools:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>index:</b> instructs samtools to index the input file 
+(GPSC46bwa.bam)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>GPSC46bwa.bam:</b> input file</p>
+
+<p align="justify">There should now be two new files called: <b>GPSC46bwa.bam</b> and 
+<b>GPSC46bwa.bam.bai</b> (the BAM index file) in the directory. Now lets list <code><b>ls -alh</code></b> 
+the content of the directory to check we have our new files, and also check out their sizes.</p>
+
+<p align="center"; style="color:green"><i><b>Quiz</b></i></p>
+<p align="center"; style="color:green"><i>How big is the SAM file compared to the BAM file?</i></p>
+
+<p align="justify"><b>Note:</b> If your SAM file is 0B (i.e., 0 bytes) then something went wrong with the 
+bwa alignment step, so restart from there. If your SAM file is fine (i.e., >0), but your BAM file is 0B 
+(i.e., empty), then something went wrong with your SAM to BAM conversion so re-do that section.</p>
+
+<p align="justify">We do not need our original SAM file anymore (as we have the BAM file now). So we 
+remove <code><b>rm</b></code> the SAM file <b>GPSC46bwa.sam</b>.</p>
+
+<h4>Assessing the alignment</h4>
+
+<p align="justify">Samtools is one of the key pieces of software in analyses involving High Throughput 
+Sequencing (HTS) data. It has a wide range of functions and combines easily with related tools such as 
+vcftools (for calling variants). One common thing to check is how many reads have aligned to the reference 
+(mapped), and how many did not (unmapped). Samtools can report this for us easily, utilising the aligner 
+SAM flags you learnt in section 2 (NGS file formats).</p>
+
+<p align="justify">The 2nd column in the SAM file contains the flag for the read alignment. If the flag 
+includes the number 4 flag in its makeup then the read is unmapped, if it doesn't include the number 4 
+then it is mapped.</p>
+
+<p align="justify"><b>Number of mapped read alignments</b></p>
+
+<code><b>docker_run staphb/samtools samtools view -c -F4 GPSC46bwa.bam</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of these commands are as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>samtools view:</b> to view the file bwa.bam</p>
+<p style="font-size: 12px; padding-left: 30px"><b> -c:</b> count the read alignment</p>
+<p style="font-size: 12px; padding-left: 30px"><b> -F4:</b> skip read alignment that have the unmapped 
+<b>F</b>lag <b>4</b></p>
+
+<p align="justify"><b>Number of unmapped reads</b></p>
+
+<code><b>docker_run staphb/samtools samtools view -c -f4 GPSC46bwa.bam</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px">This time we use <b>-f4</b>, which only include read 
+alignment that do have the unmapped flag 4</p>
+
+<p align="center"; style="color:green"><i><b>Quiz</b></i></p>
+<p align="center"; style="color:green"><i>How many reads are mapped to the Reference_sequence_GPSC46.fa 
+genome?</i></p>
+<p align="center"; style="color:green"><i>How many reads are unmapped?</I></p>
+
+<p align="justify">Technically, the above command gives the number of mapped read alignment not reads. A 
+read could be mapped equally well to multiple positions (one will be called the primary alignment, and 
+others secondary alignment [sam flag 256], or a read could be split into two parts (e.g., splicing) with 
+one part being the primary alignment and the others supplementary [sam flag 2048].</p>
+
+<p align="justify">So to get the true number of mapped reads you need to count the alignment that do not 
+have flags 4 (unmapped), 256 (not primary), and 2048 (supplementary) = 4+256+2048 = 2308.</p>
+
+<p align="justify"><b>Number of mapped read reads</b></p>
+
+<code><b>docker_run staphb/samtools samtools view -c -F2308 GPSC46bwa.bam</code></b>
+<br>
+<code><b>docker_run staphb/samtools samtools view -c -F4 -F256 -F2048 GPSC46bwa.bam</code></b>
+
+<p align="justify"><b>Statistics </b></p>
+
+<p align="justify">You can generate the statistics of mapping using the command</p>
+
+<code><b>docker_run staphb/samtools samtools stats  GPSC46bwa.bam > GPSC46bwa_bamstats.txt</code></b>
+<br>
+<p align="justify">Open the "GPSC46bwa_bamstats.txt" file to view the statistics for all the reads</p>
+
+<h4>View mapped reads in IGV</h4>
+
+<p align="justify">You will require the following files to view mapped reads in IGV:
+<ul style="padding-left: 50px">
+<li>Reference sequence that you used to map your reads</li>
+<li>Sorted and indexed mapped read BAM file</li>
+</ul>
+</p>
+
+<p align="justify">Launch IGV using methods outlines in Data, tools and computational platforms 
+(Bioinformatics Tools).</p>
+
+<p align="justify"><b>Load the reference sequence:</b> In the toolbar, Click Genome > Load Genome from 
+file > Search and select Reference_sequence_GPSC46.fa</p>
+
+<p align="justify"><b>Load the BAM file:</b> Go to File > Load from file > Select GPSC46bwa.bam</p>
+
+<p align="center"><img width="600" height="400" alt="logo"
+src="assets/images/logo/mapping_4.png"></p>
+
+<p align="justify">And you are now free to investigate different areas and the alignments in the 
+genome.</p>
+
+<p align="justify"; style="color:grey"><i><b>Practice exercise</b></i></p>
+
+<p align="justify"; style="color:grey"><i>You now need to use bwa to align the reads to the 
+Reference_sequence_GPSC33.fa. Later in the visualisation and summary statistics section, we will be 
+comparing the “Reference_sequence_GPSC46.fa” and “Reference_sequence_GPSC33.fa” alignment results. 
+</i></p>
+
+<p align="justify"; style="color:grey"><i>You need to work out the commands yourself based on the 
+previous commands for “Reference_sequence_GPSC46.fa”</i></p>
+
+<p align="justify"; style="color:grey"><i>But first, let’s make a backup of our GPSC46 files in case 
+anything goes wrong and they get overwritten, by copying them:</i></p>
+
+<p align="justify"; style="color:grey"><code><b>cp GPSC46bwa.bam backup_GPSC46bwa.bam</code></b></p>
+<p align="justify"; style="color:grey"><code><b>cp GPSC46bwa.bam.bai 
+backup_GPSC46bwa.bam.bai</code></b></p>
+
+<p align="justify"; style="color:grey"><i>Here is a reminder of the commands you used for 
+“Reference_sequence_GPSC46.fa” which <b>you will need to adapt.</b></i></p>
+
+<p align="justify"; style="color:grey"><i><b>Note:</b> Essentially, you will want to change the reference 
+name in the bwa command, and all of the SAM/BAM filenames in the bwa and samtools commands from GPSC46 to 
+GPSC33.</i></p>
+
+<p align="justify"; style="color:grey"><code><b>docker_run staphb/bwa bwa index 
+Reference_sequence_GPSC46.fa</code></b></p>
+<p align="justify"; style="color:grey"><code><b>docker_run staphb/bwa bwa mem 
+Reference_sequence_GPSC46.fa 17150_4#79_1.fastq 17150_4#79_2.fastq > GPSC46bwa.sam</code></b></p>
+<p align="justify"; style="color:grey"><code><b>docker_run staphb/samtools samtools sort GPSC46bwa.sam -o 
+GPSC46bwa.bam</code></b></p>
+<p align="justify"; style="color:grey"><code><b>docker_run staphb/samtools samtools index 
+GPSC46bwa.bam</code></b></p>
+<p align="justify"; style="color:grey"><code><b>rm GPSC46bwa.sam</code></b></p>
+<p align="justify"; style="color:grey"><code><b>docker_run staphb/samtools samtools view -c -F4 
+GPSC46bwa.bam</code></b></p>
+<p align="justify"; style="color:grey"><code><b>docker_run staphb/samtools samtools view -c -f4 
+GPSC46bwa.bam</code></b></p>
+
+<p align="center"; style="color:green"><i><b>Quiz</b></i></p>
+<p align="center"; style="color:green"><i>How many reads are mapped to the  “Reference_sequence_GPSC33.fa” 
+genome?</i></p>
+<p align="center"; style="color:green"><i>How many reads are unmapped?</I></p>
+<p align="center"; style="color:green"><i>Which reference assembly has the most mapped reads: 
+“Reference_sequence_GPSC46.fa” or “Reference_sequence_GPSC33.fa”?</I></p>
+<p align="center"; style="color:green"><i>Therefore, which reference sequence is better 
+(“Reference_sequence_GPSC46.fa” or “Reference_sequence_GPSC33.fa”)?</I></p>
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,166 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #191970;
+}
+
+.navbar a {
+  float: left;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 12px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: #89CFF0;
+}
+
+.subnav-content {
+  display: none;
+
+  position: absolute;
+  left: 0;
+text-align: center;
+  background-color: #89CFF0;
+  width: 75%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+   
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+ 
+<div class="navbar">
+    <a href="Bioinformatics_Workshop.html">Overview</a>
+<a href="selection.html">Participant Selection Process</a>
+<a href="partners.html"> Partnering Institutions</a>
+<a href="computing.html"> Data, Tools and Computational Platforms </a>
+<a href="ngs.html"> Genomic Data Generation (Sequencing)</a>
+<a href="ngs.html"> Genomic Data Analysis (Bioinformatics)</a>
+<a href="#contact">Acknowledgement</a>
+  
+</div>
+</body>
+</html>  
+ 
+
+<div class="main">
+<br>
+<h4 align="center">An overview of participant selection process</h4>
+
+<p align="left">Through the GPS and JUNO projects, we have partnered with >140 institutions globally. Application for this course was advertised to the 
+wider GPS and JUNO networks.</p> 
+
+<p align="center"><img width="600" height="400"alt="logo" 
+src="assets/images/logo/project_partners.png">
+
+<p>The application window was from the 2nd of August - 16th of September 2022. The application 
+form can be viewed below.</p>
+
+    
+<div class="row">
+  <div class="column">
+    <img src="assets/images/logo/application_form_1.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/application_form_2.png" alt="logo" style="width:100%">
+  </div>
+
+
+<p align="left">We prioritised the selection of applicants with the following 
+characteristics:</p>
+<ul style="padding-left: 30px">
+<li>from lower- and middle-income countries,</li>
+<li>are early career researchers (i.e., either master’s students, PhD students, Postdocs or 
+Research staff),</li>
+<li>are actively generating and/or analysing genomic data, and</li>
+<li>can demonstrate that this course would be of benefit to their current and future career 
+aspirations.</li>
+</ul>
+
+<p align="left">We received a total of 114 applications. Five of these were duplicates and we were 
+left with 
+109 for review. Distribution of applications received based on region, project and level of 
+education is summarised in the figure below.</p>
+
+<p align="center"><img width="500" height="270"alt="logo"
+src="assets/images/logo/applications_received.png">
+
+<p>Five reviewers assessed all the applications and scored them based on the criteria shown in 
+the figure below. Each application was reviewed by more than one person</p>
+
+<p align="center"><img width="600" height="400"alt="logo"
+src="assets/images/logo/reviews.png">
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to 
+have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html> 
+
+
+

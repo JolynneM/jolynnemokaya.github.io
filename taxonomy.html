@@ -1,0 +1,263 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+<br>
+<br>
+
+<p align=“left”><i>Before you being this section, navigate to the
+<a href="https://drive.google.com/drive/folders/1VHZ1N-Hu_raJL1I2JXMBwVbnIEndCgXZ?usp=share_link">taxonomy_classification</a> folder. You 
+will use this folder and its contents to learn and practice this
+section.</p></i>
+ <br>
+
+<h4>Overview</h4>
+<p align="justify">Kraken is a taxonomic sequence classifier that assigns taxonomic labels to 
+short DNA reads. It does this by examining the k-mers within a read and querying a database with 
+those k-mers. This database contains a mapping of every k-mer in Kraken's genomic library to the 
+lowest common ancestor (LCA) in a taxonomic tree of all genomes that contain that k-mer. The set 
+of LCA taxa that correspond to the k-mers in a read are then analyzed to create a single 
+taxonomic label for the read; this label can be any of the nodes in the taxonomic tree. Kraken is 
+designed to be rapid, sensitive, and highly precise. Our tests on various real and simulated data 
+have shown Kraken to have sensitivity slightly lower than Megablast with precision being slightly 
+higher. On a set of simulated 100 bp reads, Kraken processed over 1.3 million reads per minute on 
+a single core in normal operation, and over 4.1 million reads per minute in quick operation.</p>
+ 
+<h4>Tool(s)</h4>
+<p align=”justify”>We will be using Kraken2 in this section. If you do not have these tools in 
+your local machine, you can download them from a docker repository using the commands:</p>
+ 
+<code><b>docker pull staphb/kraken2</code></b>
+ 
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/kraken_1.png"></p>
+ 
+<h4>Classification</h4>
+<p align="justify">To classify a set of sequences (reads), we will use the command:</p>
+
+<code><b>docker_run staphb/kraken2 kraken2 --use-names --db k2_standard_08gb_20221209 
+--paired 17150_4#79_1.fastq.gz 17150_4#79_2.fastq.gz --report kraken_report.txt 
+--output -</code></b>
+
+ <br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this command is as
+follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a function to start a 
+container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To understand
+the docker_run function read the module [Data and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b>staphb/kraken2:</b> is the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b> kraken2:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--use-names:</b> Print scientific names instead 
+of just taxids </p>
+<p style="font-size: 12px; padding-left: 30px"><b>--db k2_standard_08gb_20221209:</b> Name for 
+Kraken 2 database </p>
+<p style="font-size: 12px; padding-left: 30px"><b>--paired 17150_4#79_1.fastq.gz 
+17150_4#79_2.fastq.gz:</b> Provide paired-end reads </p>
+<p style="font-size: 12px; padding-left: 30px"><b>--report kraken_report.txt:</b> Generate a 
+report with aggregrate counts/clade to file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--output -:</b> Suppress output for standard 
+output</p>
+
+<p align=”justify”>You will get the output:</p>
+
+<p align="center"><img width="400" height="300" alt="logo"
+src="assets/images/logo/kraken_2.png"></p>
+ 
+<p align=”justify”>You can check the kraken output using the command: <code><b>head kraken_report.txt</code></b></head></p>
+
+<p align="center"><img width="400" height="300" alt="logo"
+src="assets/images/logo/kraken_3.png"></p>
+ 
+
+<p align=”justify”>You should get:
+
+<ul style="ppadding-left: 30px">
+ 
+<li>1st column: Percentage of fragments covered by the clade rooted at this taxon</li>
+<li>2nd column: Number of fragments covered by the clade rooted at this taxon</li>
+<li>3rd column: Number of fragments assigned directly to this taxon</li>
+<li>4th column: A rank code, indicating (U)nclassified, (R)oot, (D)omain, (K)ingdom, (P)hylum, 
+(C)lass, (O)rder, (F)amily, (G)enus, or (S)pecies. Taxa that are not at any of these 10 ranks 
+have a rank code that is formed by using the rank code of the closest ancestor rank with a number 
+indicating the distance from that rank. E.g., "G2" is a rank code indicating a taxon is between 
+genus and species and the grandparent taxon is at the genus rank.</li>
+<li>5th column: NCBI taxonomic ID number</li>
+<li>6th column: Indented scientific name</li>
+</ul>
+
+</p>
+
+<p align=”justify”>To find the percentage of fragments covered by the <i>Streptoccocus 
+pneumoniae</i>, run:</p>
+ 
+<code><b>grep <i>"Streptococcus pneumoniae"</i> kraken_report.txt</b></code>
+ 
+<p align=”justify”> You should get:</p>
+
+<p align="center"><img width="400" height="300" alt="logo"
+src="assets/images/logo/kraken_4.png"></p>
+ 
+ 
+<h4>QC of Taxonomy</h4>
+<p align=”justify”>Now we will calculate the percentage of <i>Streptococcus pneumoniae</i> reads and 
+based on that we will assess if the sample is Pass or Fail</p>
+<p align=”justify”>The cut-off limit for <i>Streptococcus pneumoniae</i> is 60%</p>
+<p align=”justify”>≤60% = FAIL</p>
+<p align=”justify”>>60% = PASS</p>
+<p align=”justify”>The sample should have more than 60% of the reads from Streptococcus 
+pneumoniae.</p>
+<p align=”justify”>We will run a custom bash script (bash percentage_calculator.sh) to do the assessment; this script is available in 
+the kraken folder</p>
+
+<p align="center"><img width="400" height="300" alt="logo"
+src="assets/images/logo/kraken_5.png"></p>
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,378 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+<br>
+<br>
+
+<p align="left"><I>Before you being this section, navigate to the <a
+href="https://drive.google.com/drive/folders/1UIHwQYJUmPu-v2s_lou5fmXgh4ocQlZu?usp=share_link">mlst</a> 
+folder. You will use this folder and its contents to learn and practice this section.</p></I>
+<br>
+
+<h4>Overview</h4>
+<p align="justify">Multilocus sequence typing (MLST) characterises isolates 
+of bacterial species using the sequences of internal fragments of 
+(usually) seven house-keeping genes. Approximately 450-500 bp internal 
+fragments of each gene are used, as these can be accurately sequenced on 
+both strands using an automated DNA sequencer. For each house-keeping 
+gene, the different sequences present within a bacterial species are 
+assigned as distinct alleles and, for each isolate, the alleles at each of 
+the seven loci define the allelic profile or sequence type (ST). Each 
+isolate of a species is therefore unambiguously characterised by a series 
+of seven integers which correspond to the alleles at the seven 
+house-keeping loci.</p>
+
+<p align="left"><b>Further reading:</b> <a href="https://pubmlst.org/multilocus-sequence-typing">Multi-Locus Sequence Typing</a></p>
+
+<br>
+<h4>Tool(s)</h4>
+<p align="left">MLST can be performed using SRST2 or MLST. We will learn 
+both tools in this module.</p>
+
+<h4>(i) SRST2</h4>
+<p align="justify">SRST2 (Short Read Sequence Typing for Bacterial Pathogens) 
+program is designed to take Illumina sequence data, a MLST database and/or 
+a database of gene sequences (e.g. resistance genes, virulence genes, etc) 
+and report the presence of STs and/or reference genes. This program 
+performs fast and accurate detection of genes and alleles direct from WGS 
+short sequencing reads. SRST2 can type reads using any sequence 
+database(s) and can calculate combinatorial sequence types defined in 
+MLST-style databases.</p>
+
+<p align="left"><b>Further reading:</b>
+<a href="https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-014-0090-6">SRST2: Rapid genomic 
+surveillance for public health and hospital microbiology labs</a>
+<a href="https://github.com/katholt/srst2">Short Read Sequence Typing for Bacterial Pathogens</a>
+</p>
+
+<p align="left">Run the command below to download the SRST2 images from a 
+docker repository:</p>
+
+<code><b>docker pull staphb/srst2</code></b>
+
+<h5>Multilocus sequence typing using SRST2</h5>
+
+<p align="justify">SRST2 requires:
+<ul style="padding-left: 50px">
+<li>sequence reads (uses paired reads: 17150_4#79_1.fastq.gz & 
+17150_4#79_2.fastq.gz)</li>
+<li>a fasta sequence database to match to. For MLST, this means a fasta 
+file of all allele sequences. If you want to assign STs, you also need a 
+tab-delim file which defines the ST profiles as a combination of alleles. 
+You can retrieve these files automatically from <b>pubmlst.org/data/</b> 
+using the script provided:</li>
+</ul>
+</p>
+
+<p align="left"><b>Step 1 -</b> Download the fasta sequence database and a 
+tab-delim file from pubmlst.org/data/ using the command: </p>
+
+<code><b>docker_run staphb/srst2 getmlst.py --species "Streptococcus 
+pneumoniae"</code></b>
+
+<p align="left"><b><i>Note:</b> scripts for SRST2 requires an older 
+version of samtools and Bowtie so you will need to have installed 
+(samtools-0.1.18 and bowtie2-2.1.0) </i></p>
+
+<p align="left">Explore the content of your working directory us 
+(<b>ls</b>) command. You should have the following files: </p>
+<ul style="padding-left: 50px">
+<li>alleles_fasta,</li>
+<li>mlst_data_download_Streptococcus_pneumoniae_None.log,</li>
+<li>profiles_csv,</li>
+<li>Streptococcus_pneumoniae.fasta</li>
+</ul>
+</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/mlst_1.png"></p>
+
+<p align="left"><b>Step 2 (a) -</b> To execute SRST2 on a single strain 
+(17150_4#79), we will use the command: </p>
+
+<code><b>docker_run staphb/srst2 srst2 --input_pe 17150_4#79_1.fastq.gz 
+17150_4#79_2.fastq.gz --output 17150_4#79_test --log --mlst_db 
+Streptococcus_pneumoniae.fasta --mlst_definitions profiles_csv 
+--mlst_delimiter _</code></b>
+
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the section [Data, Tools and Computational 
+Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/srst2:</b> is 
+the docker image
+[<b>staphb</b> - represents the repository and <b> srst2 </b> - represents 
+the container image]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> srst2:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--input_pe:</b> 
+specifies the input file are paired end reads which are 
+17150_4#79_1.fastq.gz 17150_4#79_2.fastq.gz </p>
+<p style="font-size: 12px; padding-left: 30px"><b>--output:</b> specifies 
+the output file <b>17150_4#79_test</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>--mlst_db</b> specifies 
+the database <b>Streptococcus_pneumoniae.fasta</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>--mlst_definitions:</b> 
+specifies profiles_csv</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--mlst_delimiter:</b> 
+Character(s) separating gene name from allele number in MLST database 
+(default "-", as in arcc-1)</p>
+
+<p align=”left”>Run the command <code><b>ls -lh</b></code> to check the contents in 
+the folder. You will get this output</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/mlst_2.png"></p>
+
+<p align=”left”>The output file from the MLST run is 
+“17150_4#79_test__mlst__Streptococcus_pneumoniae__results.txt”. </p>
+
+<p align=”left”>So, <b>cat 
+</b>17150_4#79_test__mlst__Streptococcus_pneumoniae__results.txt" to view 
+the contents of this file </p>
+
+<p align=”left”>Sample 17150_4#79 is MLST 30</p>
+
+<p align=”left”><b>Step 2 (b) -</b> To execute SRST2 on multiple strains, 
+run the command: </p>
+
+<code><b>docker_run staphb/srst2 srst2 --input_pe *.fastq.gz --output 
+s.pneumo --log --mlst_db Streptococcus_pneumoniae.fasta --mlst_definitions 
+profiles_csv --mlst_delimiter _</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>--input_pe 
+*.fastq.gz:</b> specifies the input file are multiple compressed fastq.gz 
+files.</p>
+
+<h4>(ii) mlst</h4>
+<p align=”left”>mlst scans contig files against traditional PubMLST typing 
+schemes.</p>
+
+<p align=”left”><b>Further reading</b></p>
+<a href="https://github.com/tseemann/mlst">mlst</a>
+
+<p align=”left”>Navigate to the contigs folder, and then run the command 
+below to download the following images from a docker repository:</p>
+
+<code><b>docker pull staphb/mlst</code></b>
+<br>
+
+<code><b>docker pull staphb/any2fasta</code></b>
+<br>
+
+<code><b>docker pull ncbi/blast</code></b>
+<br>
+
+<p align=”left”><b>(a) -</b> To execute mlst on a single strain 
+(21127_1#30), we will use the command: </p>
+
+<code><b>docker_run staphb/mlst mlst --legacy --scheme spneumoniae 
+21127_1#30_output_contigs.fasta</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the section [Data, Tools and Computational 
+Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/mlst:</b> is the 
+docker image
+[<b>staphb</b> - represents the repository and <b> mlst </b> - represents 
+the container image]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> mlst:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--legacy:</b> use old 
+legacy output with allele header row (requires --scheme)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--scheme 
+spneumoniae:</b> specifies the species (pubmlst scheme). You can identify 
+the scheme using the command "docker_run staphb/mlst mlst --longlist"</p>
+<p style="font-size: 12px; padding-left: 
+30px"><b>21127_1#30_output_contigs.fasta:</b> input file</p>
+
+<p align=”left”>You will get the this output printed in terminal</p>
+
+<p align=”left”><b>(b) -</b> To execute mlst on a multiple strains, we 
+will use the command:</p>
+
+<code><b>docker_run staphb/mlst mlst --legacy --scheme spneumoniae *.fasta 
+> mlst.csv</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the section [Data, Tools and Computational 
+Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/mlst:</b> is the 
+docker image
+[<b>staphb</b> - represents the repository and <b> mlst </b> - represents 
+the container image]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> mlst:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--legacy:</b> use old 
+legacy output with allele header row (requires --scheme)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--scheme 
+spneumoniae:</b> specifies the species (pubmlst scheme). You can identify 
+the scheme using the command "docker_run staphb/mlst mlst --longlist"</p>
+<p style="font-size: 12px; padding-left: 30px"><b>*.fasta:</b> input 
+files</p>
+<p style="font-size: 12px; padding-left: 30px"><b>> mlst.csv:</b> 
+specifies output file</p>
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+

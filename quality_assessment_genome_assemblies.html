@@ -1,0 +1,437 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+<br>
+<br>
+<p align=“left”><I>Before you being this section, navigate to the <a
+href="https://drive.google.com/drive/folders/1X_Mu0B94Z5Xf1jP6qfRHNNbGwJthzXHh?usp=share_link">denovo_assembly</a> folder. You will use this folder
+and its contents to learn and practice this section.</p></I>
+
+
+<p align=”left”>By the end of this section, you will be able to assess the quality of assembled reads using QUAST.</p>
+  
+<h4>Overview</h4>
+<p align="justify">Modern DNA sequencing technologies cannot produce the 
+complete sequence of a chromosome. Instead, they generate large numbers of 
+reads, ranging from dozens to thousands of consecutive bases, sampled from 
+different parts of the genome. Genome assembly software combines the reads 
+into larger regions called contigs. However, current sequencing 
+technologies and software face many complications that impede 
+reconstruction of full chromosomes, including errors in reads and large 
+repeats in the genome.</p>
+
+<p align=”left”>Different assembly programs use different heuristic 
+approaches to tackle these challenges, resulting in many differences in 
+the contigs they output. This leads to the questions of how to assess the 
+quality of an assembly and how to compare different assemblies.</p>
+
+<p align=”left”><b>Further reading</b></p>
+<a href="https://academic.oup.com/bioinformatics/article/29/8/1072/228832">QUAST: quality assessment tool for genome assemblies</a>
+ 
+<h4>Tool(s)</h4>
+<p align=”left”>We will be using <b>QUAST</b> tool in this section. You  can download it from a 
+docker repository using the commands:</p>
+<br>
+<code><b>docker pull staphb/quast</code></b>
+
+<p align="justify">QUAST stands for QUality ASsessment Tool. It evaluates 
+genome/metagenome assemblies by computing various metrics. The current 
+QUAST toolkit includes the general QUAST tool for genome assemblies, 
+MetaQUAST, the extension for metagenomic datasets, QUAST-LG, the extension 
+for large genomes (e.g., mammalians), and Icarus, the interactive 
+visualizer for these tools.</p>
+<p align="justify">The QUAST package works both with and without reference 
+genomes. However, it is much more informative if at least a close 
+reference genome is provided along with the assemblies. The tool accepts 
+multiple assemblies, thus is suitable for comparison.</p>
+
+<h4>Assessing generated assemblies</h4>
+
+<p align="justify">We will assess the quality of "17150_4#79" contigs 
+generated from <i>de novo</i> assembly described in the previous module - copy <b>contigs.fasta</b> file to your denovo_assembly folder. We will 
+run the QUAST tool on the contigs using the command:</p>
+<br>
+<code><b>docker_run staphb/quast quast.py contigs.fasta -r 
+Reference_sequence_GPSC46.fa -g PROKKA_03052023.gff -1 
+17150_4#79_1.fastq.gz -2 17150_4#79_2.fastq.gz -o 
+quast_17150_4#79_output</code></b>
+
+<p align="center"><img width="400" height="240" alt="logo"
+  src="assets/images/logo/quast_1.png"></p>
+  
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as
+follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the module [Data and Computational 
+Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/quast:</b> is 
+the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b> quast.py:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>-r 
+Reference_sequence_GPSC46.fa:</b> specifies the reference sequence </p>
+<p style="font-size: 12px; padding-left: 30px"><b>-g 
+PROKKA_03052023.gff:</b> specifies gene in the reference genome (PROKKA 
+output)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>-1 
+17150_4#79_1.fastq.gz:</b> input file of forward reads</p>
+<p style="font-size: 12px; padding-left: 30px"><b>-2 
+17150_4#79_2.fastq.gz:</b> input file of reverse reads</p>
+<p style="font-size: 12px; padding-left: 30px"><b>-o quast_ 
+17150_4#79_output:</b> specifies the output folder</p>
+
+<p align=”left”>When QUAST is complete, navigate to the output folder "quast_ 17150_4#79_output" 
+using (cd) command and explore its contents. A description of the output 
+files are as follows:</p>
+
+<p style="font-size: 12px; padding-left: 
+30px"><b>report.txt:</b>tab-separated version of the summary, suitable for 
+spreadsheets (Google Docs, Excel, etc)</p>
+<p style="font-size: 12px; padding-left: 30px"><b> report.tex:</b> LaTeX 
+version of the summary</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b> icarus.html:</b> Icarus 
+main menu with links to interactive viewers.</p>
+<p style="font-size: 12px; padding-left: 30px"><b>report.pdf:</b> all 
+other plots combined with all tables (file is created if matplotlib python 
+library is installed)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>report.html:</b> HTML 
+version of the report with interactive plots inside</p>
+<p style="font-size: 12px; padding-left: 30px"><b>contigs_reports/:</b> 
+(only if a reference genome is provided)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>unaligned_report:</b> 
+detailed report on unaligned and partially unaligned contigs</p>
+<p style="font-size: 12px; padding-left: 30px"><b>k_mer_stats/:</b> (only 
+if --k-mer-stats option is specified)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>kmers_report:</b> 
+detailed report on k-mer-based metrics</p>
+<p style="font-size: 12px; padding-left: 30px"><b>reads_stats/:</b> (only 
+if reads are provided)</p>
+<p style="font-size: 12px; padding-left: 30px"><b>reads_report:</b> 
+detailed report on mapped reads statistics.</p>
+
+<h4>Metric description </h4>
+<p align=”left”><b>Summary report - based on the report.txt file in the 
+output folder</b></p> 
+<p align=”left><b># contigs</b>is the total number of contigs in the 
+assembly.</p>
+<p align=”left><b>Largest contig</b>is the length of the longest contig in 
+the assembly.</p>
+<p align=”left><b>Total length</b>is the total number of bases in the 
+assembly.</p>
+<p align=”left><b>Reference length</b>is the total number of bases in the 
+reference genome.</p>
+<p align=”left><b>GC (%)</b> is the total number of G and C nucleotides in 
+the assembly, divided by the total length of the assembly.</p>
+<p align=”left><b>Reference GC (%)</b> is the percentage of G and C 
+nucleotides in the reference genome.</p>
+<p align=”left><b>N50</b> is the length for which the collection of all 
+contigs of that length or longer covers at least half an assembly.</p>
+<p align=”left><b>NG50</b> is the length for which the collection of all 
+contigs of that length or longer covers at least half the reference genome 
+(This metric is computed only if the reference genome is provided.)</p>
+<p align=”left><b>Nx and NGx (for x between 0 and 100) </b> are defined 
+similarly to N50 but with x % instead of 50 %. The value of  x  is set 
+with --x-for-Nx (90 by default).</p>
+<p align=”left><b>L50 (Lx, LG50, LGx)</b> is the number of contigs equal 
+to or longer than N50 (Nx, NG50, NGx).</p>
+<p align=”left>In other words, L50, for example, is the minimal number of 
+contigs that cover half the assembly.</p>
+<p align=”left><b># misassemblies</b> is the number of positions in the 
+contigs (breakpoints) that satisfy one of the following criteria:
+
+<ul style="padding-left: 50px">
+ 
+<li>the left flanking sequence aligns over 1 kbp away from the right 
+flanking sequence on the reference;</li>
+<li>flanking sequences overlap on more than 1 kbp;</li>
+<li>flanking sequences align to different strands or different 
+chromosomes;</li>
+<li>flanking sequences align on different reference genomes (MetaQUAST 
+only).</li>
+</ul>
+</p>
+
+<p align=”left>This metric requires a reference genome.</p>
+<p align=”left><b># misassembled contigs</b> is the number of contigs that 
+contain misassembly events.</p>
+<p align=”left><b>Misassembled contigs length</b> is the total number of 
+bases in misassembled contigs.</p>
+<p align=”left><b># local misassemblies</b> is the number of positions in 
+the contigs (breakpoints) that satisfy the following conditions:
+<ul style="padding-left: 50px">
+<li>The gap or overlap between left and right flanking sequences is less 
+than 1 kbp, and larger than 200 bp (the maximum indel length).</li>
+<li>The left and right flanking sequences both are on the same strand of 
+the same chromosome of the reference genome.</li>
+</ul>
+</p>
+<p align="justify"><b># scaffold gap ext. mis.</b> is the number of positions 
+in the scaffolds (breakpoints) where the flanking sequences are combined 
+in the scaffold on the wrong distance (sufficient for reporting extensive 
+misassembly).</p>
+<p align="justify"><b># scaffold gap ext. mis.</b> is the number of positions 
+in the scaffolds (breakpoints) where the flanking sequences are combined 
+in the scaffold on the wrong distance (sufficient for reporting extensive 
+misassembly).</p>
+<p align="justify"><b># structural variations</b> is the number of 
+misassemblies matched with structural variations of genome (if reads or 
+BEDPE file with SV are provided, see --reads1/reads2 and --sv-bedpe).</p>
+<p align="justify"><b># unaligned mis. contigs</b> is the number of contigs 
+that have the number of unaligned bases more than 50% of contig length and 
+at least one misassembly event in their aligned fragment. Such contigs are 
+probably not related to the reference genome, thus their misassemblies may 
+be not real errors but differences between the assembled organism and the 
+reference.</p>
+<p align="justify"><b># unaligned contigs</b> is the number of contigs that 
+have no alignment to the reference sequence. The value "X + Y part" means 
+X totally unaligned contigs plus Y partially unaligned contigs. This 
+metric sums up # unaligned mis. contigs described above.</p>
+<p align="justify"><b>Unaligned length</b> is the total length of all 
+unaligned regions in the assembly (sum of lengths of fully unaligned 
+contigs and unaligned parts of partially unaligned ones). This length does 
+not include uncalled bases (N's) in the assembly.</p>
+<p align="justify"><b>Genome fraction (%)</b> is the percentage of aligned 
+bases in the reference genome. A base in the reference genome is aligned 
+if there is at least one contig with at least one alignment to this 
+base.</p>
+<p align="justify"><b>Duplication ratio</b> is the total number of aligned 
+bases in the assembly divided by the total number of aligned bases in the 
+reference genome. If the assembly contains many contigs that cover the 
+same regions of the reference, its duplication ratio may be much larger 
+than 1. This may occur due to overestimating repeat multiplicities and due 
+to small overlaps between contigs, among other reasons. </p>
+<p align="justify"><b># N's per 100 kbp</b> is the average number of uncalled 
+bases (N's) per 100,000 assembly bases.</p>
+<p align="justify"><b># mismatches per 100 kbp</b> is the average number of 
+mismatches per 100,000 aligned bases in the assembly. True SNPs and 
+sequencing errors are not distinguished and are counted equally.</p>
+<p align="justify"><b># indels per 100 kbp</b> is the average number of indels 
+per 100,000 aligned bases in the assembly. Several consecutive single 
+nucleotide indels are counted as one indel.</p>
+<p align="justify"><b># genomic features</b> is the number of genomic features 
+(genes, CDS, etc) in the assembly (complete and partial), based on a 
+user-provided list of genomic features positions in the reference genome. 
+A feature is 'partially covered' if the assembly contains at least 100 bp 
+of this feature but not the whole one.</p>
+<p align="justify"><b>Total aligned length</b> is the total number of aligned 
+bases in the assembly. A value is usually smaller than a value of total 
+length because some of the contigs may be unaligned or partially 
+unaligned.</p>
+<p align="justify"><b>Largest alignment</b> is the length of the largest 
+continuous alignment in the assembly. A value can be smaller than a value 
+of largest contig if the largest contig is misassembled or partially 
+unaligned.</p>
+<p align="justify"><b>NA50, NGA50, NAx, NGAx, LA50, LAx, LGA50, LGAx</b> ("A" 
+stands for "aligned") are similar to the corresponding metrics without 
+"A", but in this case aligned blocks instead of contigs are considered. 
+Aligned blocks are obtained by breaking contigs at misassembly events and 
+removing all unaligned bases.</p>
+<p align="justify"><b>NA50, NGA50, NAx, NGAx, LA50, LAx, LGA50, LGAx</b> ("A" 
+stands for "aligned") are similar to the corresponding metrics without 
+"A", but in this case aligned blocks instead of contigs are considered. 
+Aligned blocks are obtained by breaking contigs at misassembly events and 
+removing all unaligned bases.</p>
+
+<h4>Summary report - plot description (based on icarus.html) </h4>
+
+<p align="justify">Icarus generates contig size viewer and one or more contig 
+alignment viewers (if reference genome/genomes are provided). All of them 
+are located in output folder "quast_ 17150_4#79_output/icarus_viewers/". 
+The links to the viewers and other auxiliary information are provided in 
+Icarus main menu which is saved in "quast_ 17150_4#79_output/icarus.html". 
+All Icarus viewers contain a legend with color scheme description. For 
+moving and zooming interactive window you can use mouse, Icarus controls 
+(top panel) or keyboard shortcuts (+, -, ←, →, use Shift to speed up the 
+action).</p>
+
+<p align="justify"><b>Step 1:</b> Open the icarus.html</p>
+
+<p align="justify"><b>Step 2:</b> Click on contain size viewer</p>
+
+<p align="justify">This type of viewer draws contigs ordered from longest 
+to shortest. This ordering is suitable for comparing only largest contigs 
+or number of contigs longer than a specific threshold. The viewer shows <a 
+href=“https://quast.sourceforge.net/docs/manual.html#N50”>N50</a>
+and <a href=“https://quast.sourceforge.net/docs/manual.html#Nx”>Nx (for 
+user-defined x value)</a> with color and textual indication. If the 
+reference genome is available or at least approximate genome length is 
+known, <a 
+href=“https://quast.sourceforge.net/docs/manual.html#NG50”>N50</a>
+and <a href=“https://quast.sourceforge.net/docs/manual.html#Nx”>NGx</a>are 
+also shown. You can also tone down contigs shorter than a specified 
+threshold using Icarus control panel.</p>
+
+<p align="justify"><b>Step 3:</b> Click on QUAST report in the main menu</p>
+
+<p align="justify"><b>Step 4:</b> Click on contig alignment viewer in the main 
+menu to view contigs aligned to reference sequence</p>
+
+<p align="justify">This type of viewer is available only if a reference genome 
+is provided. For large genomes (≥ 50 Mbp) each chromosome is displayed in 
+a separate viewer. The viewer places contigs according to their mapping to 
+the reference genome. The viewer can additionally visualize genes, 
+operons, and read coverage distribution along the genome, if any of those 
+were fed to QUAST.</p>
+
+<p align=”left”><b>Further reading</b>
+<ul style=“padding-left: 30px”> 
+<li><a>https://quast.sourceforge.net/docs/manual.html#sec3.4</a></li>
+<li><a>https://github.com/ablab/quast</a></li>
+<li><a>https://academic.oup.com/bioinformatics/article/29/8/1072/228832</a></li>
+</ul></p>
+</p>
+
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+

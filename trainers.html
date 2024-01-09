@@ -1,0 +1,353 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+
+<br>
+<br>
+
+<h3 align="center">Special Thanks</h3>
+<br>
+
+
+<p align="justify"; style="padding-left:60px"><i>All these individuals have helped review and improve the content in this website. </i></p>
+
+<br>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+
+<table style="font-size: 12px; width:100%">
+  <tr>
+    <th>Name</th>
+    <th>Institution</th> 
+  </tr>
+  <tr>
+    <td>Ahmet Görkem ER</td>
+    <td>Hacettepe University Faculty of Medicine </td>
+  </tr>
+  <tr>
+    <td>Alejandro Castellanos </td>
+    <td>Universidad de los Andes</td>
+  </tr>
+<tr>
+    <td>Alejandro Reyes</td> 
+    <td>Universidad de los Andes</td>
+  </tr>
+<tr>
+    <td>Archibald Worwui</td>
+    <td>MRC Unit The Gambia</td>
+  </tr>
+<tr>
+    <td>Ana Ferreira</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+<tr>
+    <td>Camilo García</td>
+    <td>Universidad de los Andes</td>
+  </tr>
+<tr>
+    <td>Clara Ìnes</td>
+    <td>Instituto Nacional de Salud, Colombia</td>
+  </tr>
+<tr>
+    <td>Dam Khan</td>
+    <td>MRC Unit The Gambia</td>
+  </tr>
+<tr>
+    <td>Dorota Jamrozy</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+<tr>
+    <td>Elizabeth Castañeda</td>
+    <td>Instituto Nacional de Salud, Colombia</td>
+  </tr>
+<tr>
+    <td>Felipe Sierra</td>
+    <td>Universidad de los Andes</td>
+  </tr>
+  <tr>
+    <td>Furqan Kabir</td>
+    <td>The Aga Khan University</td>
+  </tr>
+<tr>
+    <td>Gettha Nagaraj</td>
+    <td>Central Research Laboratory KIMS</td>
+  </tr>
+  <tr>
+    <td>H.Cahit Burduroğlu</td>
+    <td>METU Informatics Institute</td>
+  </tr>
+<tr>
+    <td>Harry Hung</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+<tr>
+    <td>Jebel Ceesay</td>
+    <td>MRC Unit The Gambia</td>
+  </tr>
+<tr>
+    <td>Jolynne Mokaya</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+<tr>
+    <td>Kate Mellor Wright</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+<tr>
+    <td>Luisa Sacristán</td>
+    <td>Universidad de los Andes</td>
+  </tr>
+<tr>
+    <td>Maria Alejandra Ulloa Mojica</td>
+    <td>Universidad de los Andes</td>
+  </tr>
+<tr>
+    <td>Martha Anita Demba</td>
+    <td>MRC Unit The Gambia</td>
+  </tr>
+<tr>
+    <td>M Imran Nisar</td>
+    <td>The Aga Khan University</td>
+  </tr>
+<tr>
+    <td>Martin Antonio</td>
+    <td>MRC Unit The Gambia</td>
+  </tr>  
+  <tr>
+    <td>Muaaz Kamboh</td>
+    <td>Lahore University of Management Sciences</td>
+  </tr>
+  <tr>
+    <td>Muthumeenakshi Bhaskaran</td>
+    <td>Central Research Laboratory KIMS</td>
+  </tr>  
+  <tr>
+    <td>Nathalia Portilla</td>
+    <td>Universidad de los Andes</td>
+  </tr>  
+  <tr>
+    <td>Narender Kumar</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>  
+  <tr>
+    <td>Naveed Iqbal</td>
+    <td>The Aga Khan University</td>
+  </tr>
+  <tr>
+    <td>Nida Javaid</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr> 
+  <tr>
+    <td>Njilan Johnson</td>
+    <td>MRC Unit The Gambia</td>
+  </tr>
+  <tr>
+    <td>Peggy-Estelle Tientcheu</td>
+    <td>MRC Unit The Gambia</td>
+  </tr>
+  <tr>
+    <td>Peter Sylvanus Ndow</td>
+    <td>MRC Unit The Gambia</td>
+  </tr>
+  <tr>
+    <td>Ravi Kumar</td>
+    <td>Central Research Laboratory KIMS</td>
+  </tr>
+  <tr>
+    <td>Raymond Cheng</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+  <tr>
+    <td>Shaper Mirza</td>
+    <td>Lahore University of Management Sciences</td>
+  </tr>
+  <tr>
+    <td>Shreedhanya Marathe</td>
+    <td>Central Research Laboratory KIMS</td>
+  </tr>
+  <tr>
+    <td>Stephen Bentley</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+  <tr>
+    <td>Stephanie Lo</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+  <tr>
+    <td>Uzma Basit Khan</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+  <tr>
+    <td>Varun Shamanna</td>
+    <td>Central Research Laboratory KIMS</td>
+  </tr>
+  <tr>
+    <td>Victoria Carr</td>
+    <td>Wellcome Sanger Institute</td>
+  </tr>
+  <tr>
+    <td>Wajiha Abdullah</td>
+    <td>Lahore University of Management Sciences</td>
+  </tr>
+  <tr>
+    <td>Yeşim Aydin Son</td>
+    <td>METU Informatics Institute</td>
+  </tr>
+  <tr>
+    <td>Zainab Nasir</td>
+    <td>Lahore University of Management Sciences</td>
+  </tr>
+</table>
+
+</div>
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+
+

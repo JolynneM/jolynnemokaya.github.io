@@ -1,0 +1,508 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+<br>
+
+<br>
+<p align=“left”><I>Before you being this section, navigate to the AMR 
+folder. You will use this folder and its contents to learn and practice 
+this section.</p></I>
+<br>
+<h4>Overview</h4>
+<p align=”left”>One of the benefits of whole genome sequencing bacterial 
+pathogens is that you capture the genomic inventory of the organism. This 
+has been capitalised on in clinical microbiology for the in silico 
+prediction of antibiotic resistance directly from whole genome sequencing 
+data. This is being developed as an alternative to phenotypic sensitivity 
+testing of microorganisms in the laboratory, where microorganisms are 
+routinely sequenced.</p>
+
+<p align=”left”>For many microorganisms the genetic basis of antibiotic 
+resistance has been extensively studied. This means that the genes 
+responsible for resistance have been identified and sequenced, and can be 
+used to compile a database of resistance determinants and used to query an 
+organism’s genome and define its resistome. Based on the presence or 
+absence of genes or mutations it is possible to make a prediction of the 
+antibiotic sensitivities of an organism.</p>
+<br>
+<h4>Tool(s)</h4>
+<p align=”left”>There are several tools to find antibiotic resistance 
+genes in the (draft) genome. These include <a 
+href=“https://github.com/tseemann/abricate/blob/master/README.md”>ABRIcate</a> 
+, <a href=“https://github.com/sanger-pathogens/ariba”>ARIBA</a>, <a 
+href=“https://github.com/cadms/resfinder”>Resfinder</a>, <a 
+href=“https://card.mcmaster.ca/analyze/rgi”>CARD</a>, <a 
+href=“https://github.com/katholt/srst2”>SRST2</a>, <a 
+href=“https://github.com/ncbi/amr#ncbi-antimicrobial-resistance-gene-finder-amrfinderplus”>AMRFinderPlus</a>, 
+etc. We will be using ABRIcate and ARIBA in this module.</p>
+
+<h4>(i) ABRicate</h4>
+<p align=”left”>ABRicate carries out mass screening of contigs for 
+antimicrobial resistance or virulence genes. It comes bundled with 
+multiple databases: NCBI, CARD, ARG-ANNOT, Resfinder, MEGARES, EcOH, 
+PlasmidFinder, Ecoli_VF and VFDB.</p>
+
+<p align=”left”>To process with ABRicate, you should have in mind that: 
+
+<ul style=“padding-left: 30px”>
+<ol>It only supports contigs, not FASTQ reads</ol>
+<ol>It only detects acquired resistance genes, <b>NOT</b> point 
+mutations,</ol>
+<ol>It uses a DNA sequence database, not protein</ol>
+<ol>It needs BLAST+ >= 2.7 and any2fasta to be installed</ol>
+<ol>It's written in Perl</ol>
+</ul>
+</p>
+
+<p align=”left”><b>Further reading:</b> <a>https://github.com/tseemann/abricate/blob/master/README.md</a></p>
+
+
+<p align=”left”>Run the commands below to download the abricate, blast and 
+any2fasta images from docker repositories. </p>
+
+<code><b>docker pull staphb/abricate</code></b>
+<br>
+<code><b>docker pull ncbi/blast</code></b>
+<br>
+<code><b>docker pull staphb/any2fasta</code></b>
+<br>
+
+<h5>Screening for AMR genes using ABRicate</h5>
+
+<p align=”left”>ABRicate takes any sequence file that the tool any2fasta 
+can convert to FASTA files (eg. Genbank, EMBL), and they can be optionally 
+gzip or bzip2 compressed. ABRicate comes with some pre-downloaded 
+databases which can be viewed using the command:</p>
+
+<code><b>docker_run staphb/abricate abricate --list</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the section [Data, Tools and Computational 
+Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/abricate:</b> is 
+the docker image
+[<b>staphb</b> - represents the repository and <b> abricate</b> - 
+represents the container image]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> abricate:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--list:</b> will show 
+the list pre-downloaded databases</p>
+
+<p align=”left”>View the output of the above command:</p>
+
+<p align=”left”>The default database is ncbi but you can choose a 
+different database using the <b>--db</b> option, for example:</p>
+
+<code><b>docker_run staphb/abricate abricate --db ncbi --quiet input 
+file</code></b>
+<br>
+
+<p align=”left”>We will run ABRicate on the contigs.fasta file using the 
+command:</p>
+
+<p align=”left”>We will can run ABRicate on the SPAdes output  for the 
+strain (17150_4#79) in….folder. </p>
+
+<code><b>docker_run staphb/abricate abricate --db ncbi --quiet 
+contigs.fasta > results.tab</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the section [Data, Tools and Computational 
+Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/abricate:</b> is 
+the docker image
+[<b>staphb</b> - represents the repository and <b> abricate</b> - 
+represents the container image]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> abricate:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--db card:</b> specifies 
+the database</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--quiet:</b> no screen 
+output</p>
+<p style="font-size: 12px; padding-left: 30px"><b>contigs.fasta:</b> input 
+file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>> results.tab:</b> 
+specifies the output file</p>
+
+<p align=”left”>View the output of the above command (open the results.tab 
+file): </p>
+
+<p align=”left”>This results indicate that this strain has Tet(M), Msr(D) 
+and mef(A) genes which markers for tetracycline and macrolide resistance, 
+respectively. </p>
+
+<h4>(ii) ARIBA</h4>
+<p align=”left”>ARIBA (Antimicrobial Resistance Identification By 
+Assembly), uses a combined mapping/alignment and targeted local assembly 
+approach to identify AMR genes and variants efficiently and accurately 
+from paired sequencing reads. Using targeted local assembly considerably 
+reduces the complexity of the assembly process, while providing contiguous 
+gene or nucleotide sequences without the ambiguity of the interpretation 
+of aligned data. ARIBA can easily be provided with custom reference 
+sequence-sets, and includes support for a number of public databases: 
+ARG-ANNOT, CARD, MEGARes and ResFinder.</p>
+
+<p align=”left”><b>Further reading:</b>
+<a>https://www.microbiologyresearch.org/content/journal/mgen/10.1099/mgen.0.000131</a>
+<a>https://github.com/sanger-pathogens/ariba</a>
+</p>
+
+<p align=”left”>Run the commands below to download the ariba images from 
+docker repository.</p>
+
+<code><b>docker pull staphb/ariba</code></b>
+
+<h5>Screening for AMR genes using ARIBA</h5>
+
+<p align=”left”>We will use ARIBA and a publicly available curated 
+antibiotic resistance gene database from <b>card</b>, to rapidly predict 
+the resistome of <b>17150_4#79</b>, <b>13415_4#10</b>, <b>15608_3#13</b>, 
+<b>21127_1#30</b> and <b>17175_6#87</b> from the Illumina sequence reads, 
+and correlate the phenotypic metadata with the genetic information.</p>
+
+<p align=”left”>We will execute Ariba following these steps: </p>
+
+<p align=”left”><b>Step 1 -</b> Download the <b>card</b> database using 
+ARIBA and format it using the command: </p>
+
+<code><b>docker_run staphb/ariba ariba getref card out.card</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the section [Data, Tools and Computational 
+Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/ariba:</b> is 
+the docker image
+[<b>staphb</b> - represents the repository and <b> ariba</b> - represents 
+the container image]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> ariba:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>getref argannot:</b> 
+specifies the database; argannot is the database. Alternative database 
+options that can be used are: resfinder, argannot, megares, plasmidfinder, 
+resfinder, srst2_argannot, vfdb_core, vfdb_full, virulencefinder.</p>
+<p style="font-size: 12px; padding-left: 30px"><b>out.card:</b> is the 
+output name prefix</p>
+
+<p align=”left”>Next we will need to format the reference database using 
+the <b>prepareref</b> command.</p>
+
+<p align=”left”>So type: </p>
+
+<code><b>docker_run staphb/ariba ariba prepareref -f out.card.fa -m 
+out.card.tsv out.card.prepareref</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b> -f:</b> is the file of 
+resistance genes in fasta format</p>
+<p style="font-size: 12px; padding-left: 30px"><b> -m:</b> is a metadata 
+file for the resistance genes</p>
+<p style="font-size: 12px; padding-left: 30px"><b>out.card.prepareref:</b> 
+is a directory that will contain the prepared database files for running 
+ARIBA.</p>
+
+<p align=”left”>Explore your directory using <code><b>ls</code></b> 
+command. You should have the following files in your directory:</p>
+
+<p style="font-size: 12px; padding-left: 30px">out.card.fa</p>
+
+<p style="font-size: 12px; padding-left: 30px">out.card.prepareref</p>
+
+<p style="font-size: 12px; padding-left: 30px">out.card.tsv</p>
+
+<p align=”left”><b>Step 2 (a) -</b> To execute ARIBA on a single read 
+(17150_4#79), we will use the command: </p>
+
+<code><b>docker_run staphb/ariba ariba run out.card.prepareref 
+17150_4#79_1.fastq.gz 17150_4#79_2.fastq.gz 17150_4#79_out.run</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b> 
+out.card.prepareref:</b> is the directory containing the argannot database 
+files</p>
+<p style="font-size: 12px; padding-left: 30px"><b> 17150_4#79_1.fastq.gz & 
+17150_4#79_2.fastq.gz:</b> 17150_4#79 forward and reverse fastq.gz 
+files</p>
+<p style="font-size: 12px; padding-left: 30px"><b>17150_4#79_out.run:</b> 
+is the directory containing the results</p>
+
+<p align=”left”>View the detected AMR genes in the 
+17150_4#79_out.run/report.tsv file.</p>
+
+<p align=”left”><b>Step 2 (b) -</b> To execute ARIBA on a multiple 
+reads,</p>
+
+<p align=”left”>(i) We will first  create a folder for each pair of 
+compressed fastq files and named after the strain id using the 
+command:</p>
+
+<code><b>for x in *1.fastq.gz; do mkdir ${x%%_1.fastq.gz} ; mv $x 
+${x%%_1.fastq.gz}; mv ${x%%1.fastq.gz}2.fastq.gz ${x%%_1.fastq.gz}; 
+done</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>for x in *1.fastq.gz; 
+do:</b> This starts a loop where <b>x</b> takes on the value of each file 
+that matches the pattern "*1.fastq.gz" in the current directory.</p>
+<p style="font-size: 12px; padding-left: 30px"><b> mkdir 
+${x%%_1.fastq.gz}:</b> This creates a directory using the prefix of the 
+file name (i.e., removes "_1.fastq.gz" from the end of the file name).</p>
+<p style="font-size: 12px; padding-left: 30px"><b> mv $x 
+${x%%_1.fastq.gz}:</b> This moves the file with "1.fastq.gz" to the 
+directory created in the previous step.</p>
+<p style="font-size: 12px; padding-left: 30px"><b>mv 
+${x%%1.fastq.gz}2.fastq.gz ${x%%_1.fastq.gz}:</b> This moves the 
+corresponding "2.fastq.gz" file to the same directory.</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>Here's a brief 
+explanation of the <b>${x%%_1.fastq.gz} </b>syntax:</b></p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>${x}:</b> This refers to 
+the value of the variable <b>x</b>.</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>%%:</b> This is a 
+pattern removal operator</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>_1.fastq.gz:</b> This is 
+the pattern to be removed.</p>
+
+<p style="font-size: 12px; padding-left: 30px">So, 
+<b>${x%%_1.fastq.gz}</b> removes the trailing "_1.fastq.gz" from the value 
+of <b>x</b>.</p>
+
+<p align=”left”>(ii) we will then execute ARIBA using the command:</p>
+
+<code><b>for x in *#* ; do docker_run staphb/ariba ariba run 
+out.card.prepareref $x/${x}_1.fastq.gz $x/${x}_2.fastq.gz $x"_output"; 
+done</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>for x in *#* ; do:</b> 
+This starts a loop where <b>x</b> takes on the value of each file or 
+directory that contains a <b>#</b> in its name.</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run staphb/ariba 
+ariba run out.card.prepareref $x/${x}_1.fastq.gz $x/${x}_2.fastq.gz 
+$x"_output":</b> This is the command that runs the Docker container 
+(<b>staphb/ariba</b>). It appears to be running the <b>ariba run 
+</b>command with specific parameters:
+
+<ul style=“padding-left: 30px”>
+ 
+<li><b>out.card.prepareref:</b>This seems to be the name of the database 
+or reference used for the analysis.</li>
+<li><b>$x/${x}_1.fastq.gz:</b>The path to the first paired-end FASTQ 
+file.</li>
+<li><b>$x/${x}_2.fastq.gz:</b>The path to the second paired-end FASTQ 
+file.</li>
+<li><b>$x"_output":</b>The output directory for the analysis.</li>
+</ul>
+</p>
+
+<p style="font-size: 12px; padding-left: 30px">The use of <b>$x</b> 
+suggests that the script expects directories with <b>#</b> in their names, 
+and within each directory, there should be paired-end FASTQ files named 
+<b>${x}_1.fastq.gz</b> and <b>${x}_2.fastq.gz</b>.</p>
+
+<p align="left"><b>Step 3 -</b> We will then compile the results from the 
+runs above using the command:</p>
+
+<code><b>docker_run staphb/ariba ariba summary out.summary 
+*_output/report.tsv</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b> out.summary:</b> is the 
+prefix for the output files</p>
+<p style="font-size: 12px; padding-left: 30px"><b>*_output/report.tsv:</b> 
+is the report file made by the runs of ARIBA for the isolates 17150_4#79, 
+13415_4#10 15608_3#13, 21127_1#30 and 17175_6#87. This report file is 
+located in their respective directories.</p>
+
+<p align="left"><b>Step 4 -</b> Visualise output in Phandango</p>
+
+<p align="left">The Ariba summary command generates three files:
+
+
+<ul style="padding-left: 30px">
+
+<li><b>out.summary.csv:</b>summary of identifying genes and matches in the 
+isolates</li>
+<li><b>out.summary.phandango.csv:</b>a version of summary file for viewing 
+in Phandango</li>
+<li><b>out.summary.phandango.tre:</b>tree based on matches in the 
+out.summary.csv file</li>
+</ul>
+</p>
+
+<p align=”left”>To visualise the results open up the web browser, and type 
+in the URL: <a> https://jameshadfield.github.io/phandango/#/</a>
+
+<p align=”left”>From a file view window drag and drop the two phandango 
+files, <b>out.summary.phandango.tre</b> and 
+<b>out.summary.phandango.csv</b>, into the browser window. You will get 
+the output shown in the figure below.</p>
+
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+

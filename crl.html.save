@@ -1,0 +1,117 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+<div class="main">
+<br>
+<p align="center"><img width="298" height="400" alt="logo" 
+src="assets/images/logo/Advanced_Bioinformatics_Programme_India.png"></p>
+<br>
+<p align="left">The first workshop was delivered at the <a href="https://www.crlkims.com">Central 
+Research Laboratory, Kempegowda Institute of medical 
+Sciences, Bangalore, India</a>, from the 12th - 18th of February 2023.</p>
+<h4 align="left">Course Programme</h4>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+
+<div class="row">
+  <div class="column">
+    <img src="assets/images/logo/3.png" alt="logo" style="width:80%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/4.png" alt="logo" style="width:80%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/5.png" alt="logo" style="width:80%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/6.png" alt="logo" style="width:80%">
+  </div>
+</div>
+<h4 align="left">Participants</h4>
+<p align="left">19 participants representing 10 Asian/European countries were selected to take part in this 
+workshop.</p>
+
+<div class="row">
+  <div class="column">
+    <img src="assets/images/logo/part_1.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/part_2.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/part_3.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/part_4.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/part_6.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/part_8.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_10.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_12.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_13.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_14.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_15.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_16.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_17.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_18.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_19.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_5.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_7.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_9.png" alt="logo" style="width:100%">
+  </div>
+ <div class="column">
+    <img src="assets/images/logo/part_11.png" alt="logo" style="width:100%">
+  </div>
+
+<h4 align="left">Logistics</h4>
+<p align="left">The Gates Foundation through the GPS and JUNO projects catered for all the cost incurred for the 
+training. This included: flights, accommodation, food, visas took place at the conference centre and laboratories at 
+CRL. Details regarding 
+accommodation, visas, food participants representing 10 Asian/European countries were selected to take part in 
+this workshop.</p>
