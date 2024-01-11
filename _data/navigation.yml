@@ -1,6 +1,5 @@
 header:
-  - title:      Advanced Bioinformatics Course for Bacterial Pathogens
-    url:        /Bioinformatics_Workshop.html
+  
     children:
       - title:  Course Content
         url:    /course_content.html
