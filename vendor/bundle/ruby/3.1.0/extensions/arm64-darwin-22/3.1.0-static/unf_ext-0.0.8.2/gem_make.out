@@ -1,0 +1,16 @@
+current directory: /Users/jm61/Library/CloudStorage/GoogleDrive-jm61@sanger.ac.uk/My Drive/gitwebsite/jolynnemokaya.github.io/vendor/bundle/ruby/3.1.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+/Users/jm61/.rubies/ruby-3.1.3/bin/ruby -I /Users/jm61/.rubies/ruby-3.1.3/lib/ruby/3.1.0 extconf.rb
+checking for -lstdc++... yes
+creating Makefile
+
+current directory: /Users/jm61/Library/CloudStorage/GoogleDrive-jm61@sanger.ac.uk/My Drive/gitwebsite/jolynnemokaya.github.io/vendor/bundle/ruby/3.1.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make DESTDIR\= sitearchdir\=./.gem.20230801-47493-2z9hmr sitelibdir\=./.gem.20230801-47493-2z9hmr clean
+
+current directory: /Users/jm61/Library/CloudStorage/GoogleDrive-jm61@sanger.ac.uk/My Drive/gitwebsite/jolynnemokaya.github.io/vendor/bundle/ruby/3.1.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make DESTDIR\= sitearchdir\=./.gem.20230801-47493-2z9hmr sitelibdir\=./.gem.20230801-47493-2z9hmr
+compiling unf.cc
+linking shared-object unf_ext.bundle
+
+current directory: /Users/jm61/Library/CloudStorage/GoogleDrive-jm61@sanger.ac.uk/My Drive/gitwebsite/jolynnemokaya.github.io/vendor/bundle/ruby/3.1.0/gems/unf_ext-0.0.8.2/ext/unf_ext
+make DESTDIR\= sitearchdir\=./.gem.20230801-47493-2z9hmr sitelibdir\=./.gem.20230801-47493-2z9hmr install
+/usr/bin/install -c -m 0755 unf_ext.bundle ./.gem.20230801-47493-2z9hmr
