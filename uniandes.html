@@ -1,0 +1,205 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #191970;
+}
+
+.navbar a {
+  float: left;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 12px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: #89CFF0;
+}
+
+.subnav-content {
+  display: none;
+
+  position: absolute;
+  left: 0;
+text-align: center;
+  background-color: #89CFF0;
+  width: 75%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+   
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+ 
+<div class="navbar">
+    <a href="Bioinformatics_Workshop.html">Overview</a>
+<a href="selection.html">Participant Selection Process</a>
+<a href="partners.html"> Partnering Institutions</a>
+<a href="computing.html"> Data, Tools and Computational Platforms </a>
+<a href=“analysis.html"> Genomic Data Generation (Sequencing) and Analysis (Bioinformatics)</a>
+<a href="#contact">Acknowledgement</a>
+  
+</div>
+</body>
+</html>
+
+
+<div class="main">
+<br>
+<p align="center"><img width="298" height="400" alt="logo" 
+src="assets/images/logo/Advanced Bioinformatics Programme_Colombia.png"></p>
+<br>
+<p align="left">The second workshop was delivered at the <a 
+href="https://uniandes.edu.co">Universidad de los Andes, Bogotá</a>, from the 21st - 25th 
+of March 2023.</p>
+<h4 align="left">Course Programme</h4>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+
+<div class="row">
+  <div class="column">
+    <img src="assets/images/logo/col_prog_1.png" alt="logo" style="width:80%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/col_prog_2.png" alt="logo" style="width:80%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/col_prog_3.png" alt="logo" style="width:80%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/col_prog_4.png" alt="logo" style="width:80%">
+  </div>
+</div>
+<h4 align="left">Participants</h4>
+<p align="left">30 participants representing 13 South American countries were selected to 
+take part in this 
+workshop.</p>
+
+<div class="row">
+  <div class="column">
+    <img src="assets/images/logo/Slide9.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/Slide10.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/Slide11.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/Slide12.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/Slide13.png" alt="logo" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="assets/images/logo/Slide14.png" alt="logo" style="width:100%">
+  </div>
+<div class="column">
+    <img src="assets/images/logo/Slide15.png" alt="logo" style="width:100%">
+  </div>
+<div class="column">
+    <img src="assets/images/logo/Slide16.png" alt="logo" style="width:100%">
+  </div>
+<div class="column">
+    <img src="assets/images/logo/Slide17.png" alt="logo" style="width:100%">
+  </div>
+
+<h4 align="left">Logistics</h4>
+<p align="left">The table below summarises the logistics for this workshop.</p>
+
+<p align="center"><img width="800" height="525" alt="logo"
+src="assets/images/logo/logistics_colombia.png"></p>
+    
+    
+<h4 align="left">Budget</h4>
+<p align="left">The pie-chart below gives an overview of the costs for the workshop.
+workshop.</p>
+        
+<p align="center"><img width="600" height="425" alt="logo"
+src="assets/images/logo/budget_colombia.png"></p>
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to
+have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html>

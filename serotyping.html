@@ -1,0 +1,434 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+<br>
+<br>
+
+<br>
+<h4>Serotyping - <I>Streptococcus pneumoniae</I></h4>
+
+<p align=“left”><I>Before you being this section, navigate to the <a
+href="https://drive.google.com/drive/folders/1shlaQCfhUFF38FYAodoldfoGM_6qMh24?usp=sharing">serotyping_s.pneumoniae</a> 
+folder. You will use this folder
+and its contents to learn and practice this section.</p></I>
+
+<h4>Overview</h4>
+<p align=”left”>To date, there are >100 known serotypes described for S. 
+pneumoniae based on differing biochemical and antigenic properties of the 
+capsule. There are a number of in-silico methods to detect the cps locus, 
+which can then be used to predict serotypes from WGS data. Accurate 
+identification of pneumococcal serotypes is important for tracking the 
+distribution and evolution of serotypes following the introduction of 
+effective vaccines.</p>
+
+<p align="left"><b>Further reading:</b> <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6113868/">SeroBA: rapid high-throughput serotyping 
+of Streptococcus pneumoniae from whole genome 
+sequence data</a></p>
+
+<h4>Tool(s)</h4>
+<p align="justify">SeroBA was developed and it makes efficient use of 
+computational resources in addition to accurately detecting the cps locus 
+at low coverage, and it predict serotypes from WGS data using a database 
+adapted from PneumoCaT. SeroBA can predict serotypes, by identifying the 
+cps locus, directly from raw whole genome sequencing read data with 98% 
+concordance using a k-mer based method, can process 10,000 samples in just 
+over 1 day using a standard server and can call serotypes at a coverage as 
+low as 10x. SeroBA is implemented in Python3 and is freely available under 
+an open source GPLv3.</p>
+
+<p align=”left”><b>Further reading:</b> <a href="https://github.com/sanger-pathogens/seroba">SeroBA</a></p>
+
+<p align="justify">You can 
+download SeroBA from docker repositories using the commands:</p>
+
+<code><b>docker pull staphb/seroba</code></b>
+
+<h4>Predicting serotypes</h4>
+
+<p align="justify">Explore usage of SeroBA by running:</p>
+
+<code><b>docker pull staphb/seroba seroba -h</code></b>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/serotyping_1.png"></p>
+
+<p align=”left”>Seroba requires only three inputs:
+
+<ul style="padding-left: 50px">
+
+<li>Database with kmc (utility designed for counting k-mers) and ariba 
+(Antimicrobial Resistance Identification By Assembly)</li>
+<li>Forward and reverse sequence files in fastq</li>
+<li>Output prefix</li>
+</ul>
+</p>
+
+<p align=”left”>First, you can download the PneumoCaT database using the 
+command:</p>
+
+<code><b>docker_run staphb/seroba seroba getPneumocat 
+PneumoCaT_dir</code></b>
+
+<p align="justify">This command downloads PneumoCat and build an tsv 
+formatted meta data file out of it. However, for this module we will use 
+seroba_k71_14082017 database as its upto date. </p>
+
+<p align="justify"><b>Step 1 -</b> To predict the serotype of a single strain 
+(17150_4#79), we will use the command: </p>
+
+<code><b>docker_run staphb/seroba seroba runSerotyping seroba_k71_14082017 
+17150_4#79_1.fastq.gz 17150_4#79_2.fastq.gz 17150_4#79_output</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the section [Data and Computational 
+Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/seroba:</b> is 
+the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b> seroba:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>runSerotyping:</b> 
+specifies that program will perform serotyping </p>
+<p style="font-size: 12px; padding-left: 30px"><b>seroba_k71_14082017:</b> 
+are the forward and reverse fastq files</p>
+<p style="font-size: 12px; padding-left: 
+30px"><b>17150_4#79_1.fastq.gz</b> and 
+<b>17150_4#79_2.fastq.gz</b>specifies where the seroba directory</p>
+<p style="font-size: 12px; padding-left: 30px"><b>17150_4#79_output:</b> 
+specifies the output prefix</p>
+
+<p align=”left”>In the output folder,  you will find a pred.tsv including 
+your predicted serotype.</p>
+
+<p align="justify"><b>Step 2 -</b> To predict the serotype of multiple 
+strains, </p>
+
+<p align=”justify”><b>(i)</b> We will first  create a folder for each pair of 
+compressed fastq files and named after the strain id using the 
+command:
+
+<code><b>for x in *1.fastq.gz; do mkdir ${x%%_1.fastq.gz} ; mv $x 
+${x%%_1.fastq.gz}; mv ${x%%1.fastq.gz}2.fastq.gz ${x%%_1.fastq.gz}; 
+done</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>for x in *1.fastq.gz; 
+do:</b> This starts a loop where <b>x</b> takes on the value of each file 
+that matches the pattern "*1.fastq.gz" in the current directory.</p>
+<p style="font-size: 12px; padding-left: 30px"><b> mkdir 
+${x%%_1.fastq.gz}:</b> This creates a directory using the prefix of the 
+file name (i.e., removes "_1.fastq.gz" from the end of the file name).</p>
+<p style="font-size: 12px; padding-left: 30px"><b> mv $x 
+${x%%_1.fastq.gz}:</b> This moves the file with "1.fastq.gz" to the 
+directory created in the previous step.</p>
+<p style="font-size: 12px; padding-left: 30px"><b>mv 
+${x%%1.fastq.gz}2.fastq.gz ${x%%_1.fastq.gz}:</b> This moves the 
+corresponding "2.fastq.gz" file to the same directory.</p>
+</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>Here's a brief 
+explanation of the <b>${x%%_1.fastq.gz} </b>syntax:</b></p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>${x}:</b> This refers to 
+the value of the variable <b>x</b>.</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>%%:</b> This is a 
+pattern removal operator</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>_1.fastq.gz:</b> This is 
+the pattern to be removed.</p>
+
+<p style="font-size: 12px; padding-left: 30px">So, 
+<b>${x%%_1.fastq.gz}</b> removes the trailing "_1.fastq.gz" from the value 
+of <b>x</b>.</p>
+
+<p align=”left”><b>(ii)</b> we will then run seroba using the command:</p>
+
+<code><b>for x in *#* ; do docker_run staphb/seroba seroba runSerotyping 
+seroba_k71_14082017 $x/${x}_1.fastq.gz $x/${x}_2.fastq.gz $x"_output"; 
+done</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>for x in *#* ; do:</b> 
+This starts a loop where <b>x</b> takes on the value of each file or 
+directory that contains a <b>#</b> in its name.</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run staphb/seroba 
+seroba runSerotyping seroba_k71_14082017 $x/${x}_1.fastq.gz 
+$x/${x}_2.fastq.gz $x"_output:</b> This is the command that runs the 
+Docker container. It appears to be running the <b>runSerotyping</b> 
+command from the <b>seroba</b> tool inside the Docker container 
+(<b>staphb/seroba</b>). The specific parameters passed to the 
+<b>runSerotyping</b> command are as follows:
+<ul style="font-size: 12px; padding-left: 50px">
+<li><b>seroba_k71_14082017:</b>This is an argument passed to 
+<b>runSerotyping</b></li>
+<li><b>$x/${x}_1.fastq.gz:</b>The path to the first paired-end FASTQ 
+file.</li>
+<li><b>$x/${x}_2.fastq.gz:</b>The path to the second paired-end FASTQ 
+file.</li>
+<li><b>$x"_output":</b>The output directory for the analysis.</li>
+</ul>
+</p>
+
+<p style="font-size: 12px; padding-left: 30px">The use of <b>$x</b> 
+suggests that the script expects directories with <b>#</b> in their names, 
+and within each directory, there should be paired-end FASTQ files named 
+<b>${x}_1.fastq.gz</b> and <b>${x}_2.fastq.gz</b>.</p>
+
+<p align="justify"><b>Step 3 -</b> We will then compile the results from the 
+runs above using the command: </p>
+
+<code><b>docker_run staphb/seroba seroba summary ./</code></b>
+
+<p align="justify">This command will combine the seroba outputs in one tsv 
+file. </p>
+
+<br>
+
+<h4>Serotyping - <I>Streptococcus agalactiae</I></h4>
+<p align=“left”><I>Before you being this section, navigate to the <a 
+href="https://drive.google.com/drive/folders/1rhvvlQ0dwgAwlQBs5OeLbItofWKnFHPP?usp=share_link">serotyping_s.agalactiae</a> 
+folder. You  will use this folder and its contents to learn and practice this section.</p></I>
+
+<h4>Overview</h4>
+<p align=”left”>Streptococcus agalactiae (Group B Streptococcus, or GBS) 
+are currently divided into ten serotypes based on type-specific capsular 
+antigens and are designated as Ia, Ib, II, III, IV, V, VI, VII, VIII, and 
+IXs.</p>
+
+<p align=”left”><b>Further reading:</b> <a href="https://www.cdc.gov/streplab/groupb-strep/index.html">Streptococcus agalactiae (group B 
+Streptococcus)</a></p>
+
+<h4>Tool(s)</h4>
+<p align="justify">Group B Streptococcus Serotyping by Genome Sequencing 
+repository contains a curated reference file which can be used for 
+serotyping <I>Streptococcus agalactiae in silico</I> with whole genome 
+sequencing data. The reference file (GBS-SBG.fasta) is designed to be 
+usable for both short-read mapping and assembly-based strategies.</p>
+
+<p align="justify"><b>Further reading:</b> <a href="https://github.com/swainechen/GBS-SBG">Group B Streptococcus Serotyping by Genome Sequencing</a></p>
+
+<p align="justify">The fasta file in this repository is designed to be 
+immediately usable with SRST2. If SRST2 is not installed in your local 
+machine, you can download them from docker repositories using the 
+commands:</p>
+
+<code><b>docker pull staphb/srst2</code></b>
+
+<h4>Predicting serotypes - short reads</h4>
+
+<p align="justify"><b>Step 1 - </b>To predict the serotype of a single strain 
+(20280_5#33), we will use the command: </p>
+
+<code><b>docker_run staphb/srst2 srst2 --input_pe 20280_5#33_1.fastq.gz 
+20280_5#33_2.fastq.gz --output 20280_5#33_test --log --gene_db 
+GBS-SBG.fasta</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the section [Data and Computational 
+Platforms (Docker)]</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/srst2:</b> is 
+the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b> srst2:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>--input_pe:</b> 
+specifies the input file are paired end reads which are 
+20280_5#33_1.fastq.gz 20280_5#33_2.fastq.gz </p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>--output:</b> specifies 
+the output file <b>20280_5#33_test</b></p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>--log: </b>switch on 
+logging to file, rather than standard output</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>---gene_db:</b> 
+specifies the database GBS-SBG.fasta</p>
+
+<p align="justify">Run the command <code><b>ls -lh</code></b> to check the contents in 
+the folder. You will get this output</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/serotyping_2.png"></p>
+
+<p align="justify">The output file from the above run is 
+“20280_5#33_test__genes__GBS-SBG__results.txt”. </p>
+
+<p align="justify">So, <b>cat</b> 
+"20280_5#33_test__genes__GBS-SBG__results.txt" to view the contents of 
+this file  </p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/serotyping_3.png"></p>
+
+<p align="justify"><b>Step 2 - </b>To execute SRST2 on multiple strains, run 
+the command: </p>
+
+<code><b>docker_run staphb/srst2 srst2 --input_pe *.fastq.gz --output 
+s.agalactiae --log --gene_db GBS-SBG.fasta</code></b>
+
+<p style="font-size: 12px; padding-left: 30px"><b>--input_pe 
+*.fastq.gz:</b> specifies the input file are multiple compressed fastq.gz 
+files. </p>
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+

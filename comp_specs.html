@@ -1,0 +1,353 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+    <a href="pipelines.html">Bioinformatics Pipelines</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+
+<br> 
+<p align="center"><h4>Computer Specifications</p></h4>
+
+<br> 
+<h5>(a) Definitions</h5>
+
+<p align="justify">We will begin by defining a few concepts about computers that will be 
+frequently used throughout this course.</p>
+
+<ul align="justify"; style="padding-left: 30px">
+<li><b>The Central Processing Unit (CPU)</b> - also known as the processor, provides the 
+instructions and processing power the computer needs to do its work. It executes instructions of 
+a computer program, such as arithmetic, logic, controlling, and input/output (I/O) operations. 
+Within the CPU, we have cores and threads. They represent the CPU's processing capabilities and 
+play a crucial role in its performance.
+<ol style=“padding-left: 40px"><b>Cores:</b> Cores are individual processing units within a CPU. 
+Each core is capable of executing instructions and performing calculations independently. A CPU 
+with multiple cores can handle multiple tasks or threads simultaneously, which can lead to 
+improved multitasking and overall performance. For example, a quad-core CPU has four cores, and 
+an octa-core CPU has eight cores.</ol>
+<ol style=“padding-left: 40px"><b>Threads:</b> Threads, in the context of a CPU, refer to virtual 
+processing units. They are created by the CPU to handle specific tasks or processes. Each core 
+can often support multiple threads, which allows the CPU to work on multiple tasks concurrently. 
+This technology is known as multithreading. For instance, a CPU with hyper-threading technology 
+might have two threads per core, effectively doubling the number of threads it can handle.</ol>
+
+<p align=”justify”; style=“padding-left: 40px”><b><i>Note:</b>Having multiple cores and threads 
+can 
+significantly improve a CPU's performance, especially in scenarios where multiple tasks or 
+applications are running simultaneously, such as in modern computing environments where 
+multitasking is common. It enables smoother and more efficient processing of tasks, reducing 
+bottlenecks and enhancing overall system responsiveness.</p></i>
+</li>
+
+<li><b>Random Access Memory (RAM) </b>  - it is your computer's short-term memory. This is where 
+the data is stored that your computer processor needs to run your applications and open your 
+files.</li>
+<li><b>Hard disk drive (HDD) </b> - HDD Is a data storage device used in computers to store and 
+retrieve digital information. It is a non-volatile storage medium, meaning it retains data even 
+when the power is turned off. HDDs have been a common form of secondary storage for many years, 
+although they are gradually being replaced by Solid-State Drives (SSDs) in many applications due 
+to the latter's faster speed and other advantages.</li>
+<li><b>Solid-state drive (SSD) space </b> - SSD is a storage device that uses fast and durable 
+memory chips to store data in electronic form. It provides storage space for your files, 
+applications, and operating system in your computer or device, serving as a modern and speedy 
+alternative to traditional HDDs</li>
+</ul>
+</p>
+
+<p align="center"><img width="600" height="240" alt="logo"
+src="assets/images/logo/comp_1.png"></p>
+
+<br>
+
+<p align=”justify”>To successfully complete this course, you will need ~100GB HDD/SSD free space 
+in a single partition/drive and atleast 8GB of RAM, to store input data (i.e., raw reads [fastq 
+files]and databases [kraken - 8GB; serotyping databases (seroba_k71_14082017 & GBS-SBG); and 
+popPUNK database - 21GB), and output data.</p>
+
+<p align=”justify”>Outside this course, the choice of computing platform can be selected based on 
+amount of data generated per year. For example, if generating:</p>
+
+<ul align="justify"; style="padding-left: 30px">
+
+<li><100 raw reads in a year, you can use a laptop/personal computer to analyse your data.</li>
+
+<li>between 100 - 1000 reads, you might  need a workstation which is a high-performance computer 
+system that is basically designed for a single user and has advanced graphic capabilities, large 
+storage capacity, and a powerful central processing unit. A workstation is more capable than a 
+personal computer(PC)/laptop but is less advanced than a server.</li>
+
+<li>>1000 raw reads in a year, you will need server/cluster - a server is a specialised computer 
+or software system designed to provide services, resources (especially CPU and RAM), or data to 
+other computers or devices, known as clients, over a network. Clusters are groups of servers that 
+are managed together and participate in workload management.</li>
+</ul>
+
+<p align="center"><img width="600" height="340" alt="logo"
+src="assets/images/logo/comp_2.png"></p>
+
+<h5>(b) Operating systems</h5>
+
+<p align="justify">An operating system (OS) is a fundamental software component that 
+manages and controls a computer's hardware resources and provides a foundation for 
+running applications. It serves as an intermediary between the hardware and 
+software, allowing users and applications to interact with and utilize the 
+computer's resources effectively.</p>
+
+<p align="justify">Unix, Linux, and Windows are three different families of 
+OS used on computers and servers. Here are some key differences 
+between them:
+
+<ul align=”justify”; style="padding-left: 30px">
+<li><b>Unix</b>: is one of the earliest operating systems, developed at AT&T's Bell 
+Labs in the late 1960s. It has a rich history and served as the inspiration for many 
+other operating systems. Unix operating systems are often proprietary and require 
+licenses. Different flavors of Unix (e.g., AIX, HP-UX, Solaris) have different 
+owners and licensing terms.</li>
+
+<li><b>Linux</b>: is a Unix-like operating system that was developed in the 
+early 1990s by Linus Torvalds. It is based on Unix principles and design but is 
+open-source and community-driven. Linux is open-source and distributed under various 
+licenses, such as the GNU General Public License (GPL). This means it is generally 
+free to use, modify, and distribute. Types of Linux distributions include: 
+Ubuntu, Debian, Fedora etc.</li>
+
+<li><b>Windows</b>: is developed by Microsoft and has its roots in MS-DOS, 
+which was released in the 1980s. Windows has a distinct development history from 
+Unix-based systems.Windows is proprietary software, and users need to purchase 
+licenses for its use. Microsoft offers different editions with varying features and 
+licensing models.</li>
+
+</ul> </p>
+
+<p align="justify"; style="padding-left: 30px"><i><b>Note</b></i></p>
+<p align="justify"; style="padding-left: 30px"><i>Both Unix and Linux provide 
+text-based and graphical user interfaces. Users can choose to work in a 
+command-line environment or use graphical desktop environments. While Unix and Linux 
+have graphical interfaces, they are known for their powerful command-line 
+interfaces. Many tasks and system administration can be performed more efficiently 
+through the command line. These operating systems use a hierarchical file system 
+with directories and files. File paths are case-sensitive.
+
+<br>
+<br>
+
+Windows is primarily known for its graphical user interface (GUI), with versions 
+like Windows 10 and 11 offering a modern, user-friendly desktop interface. Windows 
+has a strong emphasis on GUI-based interaction, and many users may not need to use 
+the command line for day-to-day tasks. </i></p>
+
+<p align="justify"; style="padding-left: 30px"><i><b>If you are a Windows user, we 
+recommend that you install Linux OS given that it has powerful command-line 
+interfaces. </b></i></p>
+
+<p align="justify"; style="padding-left:70px"><i><b>How to install Ubuntu in Windows 
+computer</i></b>
+
+<p align="justify"; style="padding-left:70px"><i>To install Ubuntu on a 
+Windows computer, you can use the Windows Subsystem for Linux (WSL), which 
+allows you to run a Linux distribution alongside your existing Windows 
+installation without the need for dual-booting. Here are the steps to 
+install Ubuntu using WSL:</i></p>
+
+<p align="justify"; style="padding-left:70px"><i><b>a. Prerequisites:</i></b></p>
+
+<p align="justify"; style="padding-left:70px"><i>1. Windows 10 or later: Ensure 
+that you are running Windows 10 or a later version.</i></p>
+
+<p align="justify"; style="padding-left:70px"><i>2. Enable WSL: Open PowerShell 
+as Administrator and run the following command to enable WSL:<br> <code><b>dism.exe 
+/online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all 
+/norestart</code></b></i></p>
+
+<p align="justify"; style="padding-left:70px"><i>3. Enable Virtualization: 
+If you're using a virtual machine, ensure that virtualization is enabled in 
+your BIOS/UEFI settings. You can check if virtualisation is enabled on your 
+task manager as shown in the image below</i></p>
+
+<p align="center"><img width="400" height="300" alt="logo"
+src="assets/images/logo/comp_5.png"></p>
+
+<p align="justify"; style="padding-left:70px"><i><b>b. Install Ubuntu 
+using CLI:</i></b></p>
+
+<p align="justify"; style="padding-left:70px"><i>1. Open PowerShell: Open 
+PowerShell as Administrator.</i></p>
+
+<p align="justify"; style="padding-left:70px"><i>2. Download Ubuntu Image: 
+Download the Ubuntu image (choose the version you want) using the curl 
+command: <br><code><b>curl.exe -o ubuntu-20.04.appx https://aka.ms/wslubuntu2004
+</code></b> <br> Replace 
+20.04 with the desired version. </i></p>
+
+<p align="justify"; style="padding-left:70px"><i>3. Install Ubuntu: 
+Install Ubuntu using the Add-AppxPackage PowerShell cmdlet: 
+<br><code><b>Add-AppxPackage 
+.\ubuntu-20.04.appx</code></b></i></p>
+
+<p align="justify"; style="padding-left:70px"><i>4. Launch Ubuntu: 
+After the installation is complete, launch Ubuntu by 
+running: <br><code><b>ubuntu2004</code></b></i></p>
+
+<p align="justify"; style="padding-left:70px"><i>5. Set Up Ubuntu: 
+The first time you launch Ubuntu, it will ask 
+you to set up a new user account with a 
+username and password.</i></p>
+
+<p align="justify"; style="padding-left:70px"><i><b>c. Update and 
+Upgrade.</b> After setting up Ubuntu, it's a good idea to update the package 
+lists and upgrade the installed packages to ensure you have the latest 
+software versions. Open the Ubuntu terminal and run the following 
+commands: <br>
+<code><b>sudo apt update</code></b>
+<br>
+<code><b>sudo apt upgrade</code></b>
+</i></b></p>
+
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+
+

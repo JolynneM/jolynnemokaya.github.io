@@ -1,0 +1,290 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+  <br>
+  <br>
+
+<p align=“left”><i>Before you being this section, navigate to the 
+<a href="https://drive.google.com/drive/folders/1cnR3jwv1TFjf8oK_8-ntoRpVKzjfvfvf">adapter 
+trimming folder</a>. You will use this folder and its contents to learn and practice this 
+section.</p></i>
+<br>
+
+<h4>Overview</h4>
+<p align=“justified”>Trimming of adapter sequences from short read data is a common preprocessing step 
+during NGS data analysis. When performing paired-end sequencing, the overlap between forward and 
+reverse read can be used to identify excess adapter sequences.</p>
+<p align=“left”>Illumina FASTQ file generation pipelines include an adapter trimming option for 
+the removal of adapter sequences from the 3’ ends of reads. Adapter sequences should be removed 
+from reads because they interfere with downstream analyses, such as alignment of reads to a 
+reference. The adapters contain the sequencing primer binding sites, the index sequences, and the 
+sites that allow library fragments to attach to the flow cell lawn. Libraries prepared with 
+Illumina library prep kits require adapter trimming only on the 3’ ends of reads, because adapter 
+sequences are not found on the 5’ ends.</p>
+
+<p><b>Further reading</p></b>
+
+<a href="https://knowledge.illumina.com/software/general/software-general-reference_material-list/000002905">Adapter trimming: Why are adapter sequences trimmed from only the 3' ends of reads</a>
+
+<br>
+
+<a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-016-1069-7">SeqPurge: highly-sensitive adapter trimming for paired-end NGS data</a>
+
+
+<h4>Tool(s)</h4>
+<p align=“left”>We will be using FastQC and trimmomatic tools in this section. If you do not have 
+these tools in your local machine, you can download them from a docker repository using the 
+commands:</p>
+
+<code><b>docker pull staphb/fastqc</code></b>
+<br>
+<code><b>docker pull staphb/trimmomatic</code></b>
+
+
+<h4>QC before removal of adapters</h4>
+<p align=“left”>We will assess the quality of <b>spneumo_R1.fastq.gz</b> and 
+<b>spneumo_R2.fastq.gz</b>. We will run the fastqc program on this read using the command:</p>
+
+<code><b>docker_run staphb/fastqc fastqc *.fastq.gz</code></b>
+
+<p align="center"><img width="500" height="500" alt="logo"
+src="assets/images/logo/adapter_trimming_1.png"></p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this command is as
+follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a function to start a
+container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To understand
+the docker_run function read the module [Data and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b>staphb/fastqc:</b> is the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b>fastqc:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>*.fastq.gz:</b> input files;  the
+(*) sign tells fastqc tool to
+run on files that end with fastq.gz in the folder</p>
+
+<p align=“left”>The Adapter_trimming folder will now have the following files</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/adapter_trimming_2.png"></p>
+
+
+<p align=“left”>Look at the QC reports <b>spneumo_R1.fastq.html</b> and 
+<b>spneumo_R2.fastq.html</b>.  Let's explore <b>spneumo_R2.fastq.html</b>.</p>
+
+<p align="center"><img width="400" height="200" alt="logo"
+src="assets/images/logo/adapter_trimming_3.png"></p>
+
+
+<p align=“left”>You can see the per base sequence quality and adapter content have failed for 
+this read. This indicates that it contains adapter sequences. We will remove the adapter reads 
+and perform QC on the trimmed read in the following section.</p>
+
+<h4>Adapter trimming: Paired end reads</h4>
+
+<p align=“left”>We use “trimmomatic tool” to remove adaptors, to trim low quality reads and to 
+remove short sequences.</p>
+<p align=“left”>To execute the trimmomatic tool, we will run the command:</p>
+
+<code><b>docker_run staphb/trimmomatic trimmomatic PE spneumo_R1.fastq.gz spneumo_R2.fastq.gz 
+spneumo_R1.trimmed.fastq.gz /dev/null spneumo_R2.trimmed.fastq.gz /dev/null 
+ILLUMINACLIP:adapters/TruSeq3-PE.fa:2:30:10 SLIDINGWINDOW:4:20 MINLEN:36</code></b>
+<br>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this command is as
+follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a function to start a
+container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data "$@". To understand
+the docker_run function read the section [Data, Tools and Computational Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b>staphb/trimmomatic:</b> is the docker image</p>
+<p style="font-size: 12px; padding-left: 30px"><b>trimmomatic:</b> is the tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>PE:</b> That it will be taking paired end file 
+as input</p>
+<p style="font-size: 12px; padding-left: 30px"><b>spneumo_R1.fastq.gz:</b> The first input file 
+name</p>
+<p style="font-size: 12px; padding-left: 30px"><b>spneumo_R2.fastq.gz:</b> The second input file 
+name</p>
+<p style="font-size: 12px; padding-left: 30px"><b>spneumo_R1.trimmed.fastq.gz:</b> The output 
+file for surviving pairs from the _1 file</p>
+<p style="font-size: 12px; padding-left: 30px"><b>/dev/null:</b> Discards the output file for 
+orphaned reads from the _1 file </p>
+<p style="font-size: 12px; padding-left: 30px"><b>/spneumo_R1.trimmed.fastq.gz:</b> The output 
+file for surviving pairs from the _2 file </p>
+<p style="font-size: 12px; padding-left: 30px"><b>/dev/null:</b> Discards the output file for 
+orphaned reads from the _2 file </p>
+<p style="font-size: 12px; padding-left: 
+30px"><b>ILLUMINACLIP:adapters/TruSeq3-PE.fa:2:30:10:</b> To clip the illumina adapters from the 
+input file using the adapter sequences listed in TruSeq3-PE.fa. The numbers 2:30:10 tell 
+trimmomatic how to handle sequence matches to the TruSeq3 adapters</p>
+<p style="font-size: 12px; padding-left: 30px"><b>SLIDINGWINDOW:4:20:</b> To use a sliding window 
+of size 4 that will remove bases if their phred score is below 20 </p>
+<p style="font-size: 12px; padding-left: 30px"><b>MINLEN:36:</b> This will discard and reads that 
+do not have a at least 36 bases remaining after this trimming step </p>
+
+<p align=“left”>You will have the following output</p>
+
+<p align="center"><img width="400" height="150" alt="logo"
+src="assets/images/logo/adapter_trimming_5.png"></p>
+
+<p align=“left”>Now run fastqc on the trimmomatic output files *.trimmed.fastq.gz using the 
+command:</p>
+
+<code><b>docker_run staphb/fastqc fastqc *.trimmed.fastq.gz</code></b>
+
+<p align="center"; style="color:green"><i><b>Quiz</b></i></p>
+<p align="center"; style="color:green"><i><b>What percent of reads did you discard from your 
+sample?</b></i></p>
+<p align="center"; style="color:green"><i><b>What percent of reads did you keep?</b></i></p>
+<p align="center"; style="color:green"><i><b>How different is the HTML report for the 
+spneumo_R1.trimmed.fastq.gz/spneumo_R2.trimmed.fastq.gz  from the 
+spneumo_R1.fastq.gz/spneumo_R2.fastq.gz?</b></i></p>
+
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+

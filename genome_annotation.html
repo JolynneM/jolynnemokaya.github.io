@@ -1,0 +1,255 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">   
+<br>
+<br>
+
+<p align="left"><I>Before you being this section, navigate to the 
+<b>spades_assembly folder</b> generated in the De novo assembly module. We 
+will be using content into learn and practice this section.</p></I>
+<br>
+
+<h4>Overview</h4>
+<p align="left">Genome annotation is the process of identifying and 
+labeling all the relevant features on a genome sequence. At minimum, this 
+should include coordinates of predicted coding regions and their putative 
+products, but it is desirable to go beyond this to non-coding RNAs, signal 
+peptides and so on.</p>
+
+<p align="left"><b>Further reading:</b> <a>https://academic.oup.com/bioinformatics/article/30/14/2068/2390517</a></p>
+
+<h4>Tool(s)</h4>
+<p align="left">We will use a software tool called <b>Prokka</b> to 
+annotate the draft genome sequence produced after running SPAdes. Prokka 
+is a "wrapper"; it collects together several pieces of software (from 
+various authors), and so avoids "re-inventing the wheel".</p>
+
+<p align="left">Prokka finds and annotates features (both protein coding 
+regions and RNA genes, i.e. tRNA, rRNA) present on on a sequence. Note, 
+Prokka uses a two-step process for the annotation of protein coding 
+regions: first, protein coding regions on the genome are identified using 
+Prodigal; second, the function of the encoded protein is predicted by 
+similarity to proteins in one of many protein or protein domain databases. 
+Prokka is a software tool that can be used to annotate bacterial, archaeal 
+and viral genomes quickly, generating standard output files in GenBank, 
+EMBL and gff formats.</p>
+
+<p align="left"><b>Further reading:</b> <a>https://github.com/tseemann/prokka</a></p>
+
+<p align="left">Run the command to download the prokka image from docker 
+repository.</p>
+
+<h4>Genome annotation</h4>
+<p align="left">Run the command in terminal to execute Prokka:</p>
+
+<p style="font-size: 12px; padding-left: 30px"><b>An explanation of this 
+command is as follows:</b></p>
+<p style="font-size: 12px; padding-left: 30px"><b>docker_run:</b>is a 
+function to start a container. The function includes the
+following flags: docker run --rm=True -u $(id -u):$(id -g) -v $(pwd):/data 
+"$@". To understand
+the docker_run function read the section [Data, Tools and Computational 
+Platforms (Docker)]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> staphb/prokka:</b> is 
+the docker image
+[<b>staphb</b> - represents the repository and <b> prokka </b> - 
+represents the container image]</p>
+<p style="font-size: 12px; padding-left: 30px"><b> prokka:</b> is the 
+tool</p>
+<p style="font-size: 12px; padding-left: 30px"><b>contigs.fa:</b> input 
+file (this file is the output from SPAdes)</p>
+
+<h4>Prokka output</h4>
+
+<p align="left">Once Prokka has finished, a new folder with containing 
+Prokka output will be present in your working directory.Examine each of 
+its output files.</p>
+
+<ul style="padding-left: 30px">
+
+<li>The GFF and GBK files contain all of the information about the 
+features annotated (in different formats.)</li>
+<li>The .txt file contains a summary of the number of features 
+annotated.</li>
+<li>The .faa file contains the protein sequences of the genes 
+annotated.</li>
+<li>The .ffn file contains the nucleotide sequences of the genes 
+annotated.</li>
+</ul>
+</p>
+
+<p align="left">We will visualise Prokka output in the next page using 
+IGV</p>
+
+<h4>Viewing genome annotation in IGV</h4>
+
+<p align="left">You will require the following files to view genome 
+annotation in IGV:</p>
+
+<ul style="padding-left: 30px">
+
+<li>Reference genome which will be the fna output of Prokka. This sequence 
+will be the reference against which annotations are displayed</li>
+<li>gff file which is an output of Prokka</li>
+</ul>
+</p>
+
+<p align="left">Launch IGV using methods outlines in the section [Data, 
+Tools and Computational Platforms (IGV)]</p>
+
+<p align="left><b>Load the reference sequence: </b> In the toolbar, Click 
+Genome > Load Genome from file > Search and select PROKKA_12252022.fna (as 
+an example)</p>
+<br>
+
+<p align="left><b>Load the gff file: </b> Go to File > Load from file > 
+PROKKA_12252022.gff (as an example)</p>
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+

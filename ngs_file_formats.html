@@ -1,0 +1,476 @@
+---
+layout: home
+# articles:
+#   excerpt_type: html
+---
+  
+  
+<!DOCTYPE html>   
+<html>  
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+  
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 90%;
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 40;
+  left: 0;
+  background-color: #ffffff00;
+  overflow-x: hidden;
+  padding-top: 40px;
+}
+  
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 12px;
+  color: 
+#386E90;
+  display: block;
+  border: none;
+  background: none;  
+  width: 100%;  
+  text-align: left;
+  cursor: pointer;  
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color:
+#87B1B0;
+} 
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 14px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+
+.active {  
+  background-color: #77A7B0;
+  color: white;
+} 
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #E5F2F0;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+  
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+ 
+<div class="sidenav">
+  <a href="Bioinformatics_Workshop.html">Course Overview</a>
+
+<button class="dropdown-btn">Data, Tools and Computational Platforms
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="computing.html">Overview</a>
+    <a href="comp_specs.html">Computer Specifications</a>
+    <a href="docker.html">Software Management Apps (Docker) & Bioinformatics Tools</a>
+  </div>
+  
+<button class="dropdown-btn">Genomic Data Analysis (Bioinformatics)
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a href="analysis.html">Overview</a>
+    <a href="ngs_file_formats.html">NGS File Formats</a>
+    <a href="ngs_data_QC.html">NGS Data Quality Control</a>
+    <a href="adapter_trimming.html">Adapter Trimming</a>
+    <a href="taxonomy.html">Taxonomy Sequence Classification</a>
+    <a href="denovo_assembly.html">de novo Assembly</a>
+    <a href="quality_assessment_genome_assemblies.html">Quality Assessment
+of Genome Assemblies</a>
+    <a href="genome_annotation.html">Genome Annotation</a>
+    <a href="serotyping.html">Serotyping</a>
+    <a href="mlst.html">Multilocus Sequence Typing</a>
+    <a href="amr.html">AMR Profiling</a>
+    <a href="mapping.html">Mapping</a>
+    <a href="variant_calling.html">Variant Calling</a>
+    <a href="phylogenetics.html">Phylogenetics</a>
+  </div>   
+  
+<a href="trainers.html">Acknowledgement</a>
+  
+</div>
+
+<div class="main">  
+<br>
+
+<p align="justify"><h4>Overview</p></h4>
+
+<p align="left">The information of biological sequences (nucleotides and amino acids) is 
+stored in various file formats for easy access and analysis. Some of these files are in 
+human-readable (text) format and others are in machine-readable (binary) format.</p>
+<br>
+
+<h4>Fasta files</h4>
+
+<p align="left">Fasta file is a text file which consists of a single and multiple sequences. 
+Though it is not mandatory, fasta files generally have an extension of <b>.fa</b>, 
+<b>.fas</b>, <b>.fsa</b>, <b>.fna</b> or <b>.fasta</b>. Each sequence has a one-line header, 
+starting with the “<b>></b>”, followed by the nucleotide (or amino acid) sequence. This sequence can be in a single line or span across 
+multiple lines.</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/ngs_1.png"></p>
+
+<h4>Fastq files</h4>
+
+<p align="left">This section is also described in the <a 
+href="https://docs.google.com/document/d/1mn2OGqFxk_rHotxST2CLlDv7FIJyCxO_xES69DZX47w/edit#">F2 
+module</a>
+
+<br>
+
+As the technologies evolved to sequence millions of “short reads”, storing the information in 
+multiple files became difficult to manage and also consumed more disk space. To address these 
+difficulties, a new file format, fastq (fast Q) was introduced in 2009. Now, fastq format is 
+the de facto standard of high-throughput sequence file format for next generation sequencers. 
+
+<br>
+
+Fastq is a text file format (human-readable). It has 4 lines for each sequence entry.
+
+<ul style="padding-left: 30px">
+  <li>Header: starts with “@”</li>
+  <li>Sequence</li>
+  <li>Optional field: starts with “+”</li>
+  <li>Quality scores</li>
+</ul>
+
+<br>
+
+As the sequence and quality correspond to each other, the length of the 2nd and 4th lines are 
+always equal.</p>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/ngs_2.png"></p>
+
+<p align="left>As shown in Figure above, each sequence read is represented by 4 lines; 
+
+<ul style="padding-left: 30px">
+  <li><b>1st line</b> is the sequence identifier which contains information about the sequencing process and is unique for each read</li>
+  <li><b>2nd line</b> is the sequence of bases read during sequencing process</li>
+  <li><b>3rd line</b> start with “+” sign and is the separator and sometimes can contain the same information as identifier minus the “@” symbol</li> 
+ <li><b>4th line</b> contains the <a href="https://emea.illumina.com/science/technology/next-generation-sequencing/plan-experiments/quality-scores.html">quality scores</a>. The quality scores represent the probability of a base being read incorrectly by the sequencer. The higher the 
+quality score the less is the probability of it being incorrect. The quality scores are represented by <a href="https://en.wikipedia.org/wiki/FASTQ_format#Encoding">ASCII 
+characters</a> and can be used to infer the quality of bases. You can read more about the FastQ format <a href="https://help.basespace.illumina.com/articles/descriptive/fastq-files/">here</a>. The widely 
+accepted threshold for quality score/value is 20, below which the base is considered to be low quality and is usually excluded or removed from the sequence data 
+before proceeding for downstream analysis. A quality score of 20 would mean the probability of incorrect base is 1 in 100.</li> 
+</ul>
+
+<b>Note:</b> The FastQ files generated by the sequencers are usually zipped, due to its large 
+size. It is unwise to unzip these files. Downstream bioinformatics analysis tools are almost 
+always able to work with the zipped file. Depending on which sequence program you select, ‘single 
+end’ or ‘paired-end’ will determine how many files you have. For Illumina reads, there will be a single 
+‘fastq.gz’ file for the single end sequencing and two files for the paired-end sequencing, 
+denoting the read1 (_R1.fastq.gz) and the read2 (_R2.fastq.gz). 
+
+<br>
+
+Most often, paired-end data is stored in two files and they have “R1” and “R2” in their file 
+names. The order of the reads in paired-end files correspond to their pairing order, i.e. entry 1 
+in R1 file is sequenced from the same template as entry 1 in R2 file, and so on and so forth. 
+Therefore, the total number of sequences should always be equal in R1 and R2 files. If for any 
+reason, any entry is removed from R1, its corresponding entry from R2 should also be removed.
+
+<br>
+
+Sometimes paired-end data is saved in interleaved fastq format, storing forward and reverse reads 
+sequentially in a single file.
+
+</p>
+
+<h5 style="padding-left: 50px">Phred score</h5>
+
+<p align="left"; style="padding-left: 50px"> A quality score (PHRED scale) for each base pair. It indicates how confident we can be that the base was sequenced and identified correctly.
+
+<b>Q = -10log­10(p)</b>
+
+<br>
+<br>
+where <b>p</b> is the probability that the corresponding base call is incorrect.
+
+<br>
+<br>
+Higher Q scores indicate a smaller probability of error.
+
+<br>
+<br>
+Lower Q scores can result in a significant portion of the reads being unusable. They may also lead to increased false-positive variant calls, resulting in inaccurate conclusions.
+
+<br>
+<br>
+A quality score of 20 (Q20) represents an error rate of 1 in 100 (meaning every 100 bp sequencing read may contain an error), with a corresponding call accuracy of 99%. When sequencing quality reaches Q30, 
+virtually all of the reads will be perfect, with no errors or ambiguities. This is why Q30 is considered a benchmark for quality in next-generation sequencing (NGS).
+
+<br>
+<br>
+Fastq-sanger holds PHRED scores from 0-93 whereas fastq-Illumina provides PHRED scores from 0-62. Rather than giving numeric values of PHRED score they are provided in ASCII character codes from 33 to 126. 
+Why 33 to 126? Because 33 to 126 codes for single characters, so the score can be represented by a single character. Refer to the table below.
+
+<br>
+<br>
+Based on the base character (a character that represents zero PHRED score ), the PHRED scale is often referred to as PHRED+33 (ASCII character !) or PHRED+64 (ASCII Character ?).
+<br>
+<br>
+<b>Phred table</b>
+
+<p align="center"><img width="400" height="240" alt="logo"
+src="assets/images/logo/ngs_3.png"></p>
+
+<p align="left"; style="padding-left:50px">The table depicts the error rate seen in the sequencing as per the Phred score. On an average the Qscore should be more than 30 to accept it as a good read.</p>
+
+<p align="center"><img width="600" height="200" alt="logo"
+src="assets/images/logo/ngs_4.png"></p>
+
+<h4>Sequence Alignment Map (SAM) format</h4>
+
+<p align="left">The sequence alignment map (SAM) format is a tab-delimited text file format developed to store read mapping. Every SAM file has two sections:
+
+<ul style="padding-left:30px">
+<li>Header section (optional)</li>
+<li>Alignment section</li>
+</ul>
+
+<p align="center"><img width="600" height="200" alt="logo"
+src="assets/images/logo/ngs_5.png"></p>
+
+<p align="left">Entries in the header section always start with “@” and come before the alignment section. Each line in the header is tab-delimited and has a two letter header code called <b>TAG</b>. They 
+follow the “TAG:VALUE” format. These TAG are:
+
+<ul style="padding-left:30px">
+<li>HD - The Header Line - 1st line</li>
+<li>SO - Sorting order of alignments (unknown(default), unsorted, query-name and coordinate)</li>
+<li>SQ - Reference sequence dictionary</li>
+<li>SN - Reference sequence name</li>
+<li>LN - Reference sequence length</li>
+<li>PG - Program</li>
+<li>ID - The program ID</li>
+<li>PN - The program name</li>
+<li>VN - Program version number</li>
+<li>CL - The Command actually used to create the SAM file</li>
+<li>RG - Read Group - “a set of reads that were all the product of a single sequencing run on one lane”</li>
+</ul>
+
+In the alignment section, there are 11 mandatory fields. These are:
+
+<ul style="padding-left:30px">
+<li>QNAME: Read Name</li>
+<li>FLAG: Info on if the read is mapped, part of a pair, strand etc</li>
+<li>RNAME: Reference Sequence Name that the read aligns to</li>
+<li>POS: Leftmost position of where this alignment maps to the reference</li>
+<li>MAPQ:Mapping quality of read to reference (phred scale P that mapping is wrong)</li>
+<li>CIGAR: Compact Idiosyncratic Gapped Alignment Report</li>
+<li>RNEXT:Paired Mate Read Name</li>
+<li>PNEXT:Paired Mate Position</li>
+<li>TLEN:Template length/Insert Size (difference in outer coordinates of paired reads)</li>
+<li>SEQ:The actual read DNA sequence</li>
+<li>QUAL:ASCII Phred quality scores (+33)</li>
+<li>TAGS:Optional data - Lots of options e.g MD=String for mismatches</li>
+</ul>
+
+Let us take a close look at FLAG and CIGAR values.
+
+<br>
+
+<b>FLAG</b> is a sum of alignment bit flags. Below is the table showing what each bit corresponds to.
+
+<style>
+table, th, td {
+  border: 1px solid;
+}
+</style>
+</head>
+
+<table>
+  <tr>
+    <th>Bit</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>0x1</td>
+    <td>Template having multiple segments in sequencing</td>
+  </tr>
+  <tr>
+    <td>0x2</td>
+    <td>Each segment properly aligned according to the aligner</td>
+  </tr>
+<tr>
+    <td>0x4</td>
+    <td>Segment unmapped</td>
+  </tr>
+ <tr>
+    <td>0x8</td>
+    <td>Next segment in the template unmapped</td>
+  </tr>
+ <tr>
+    <td>0x10</td>
+    <td>SEQ being reverse complemented</td>
+  </tr>
+ <tr>
+    <td>0x20</td>
+    <td>SEQ of the next segment in the template being reversed</td>
+  </tr>
+ <tr>
+    <td>0x40</td>
+    <td>The first segment in the template</td>
+  </tr>
+ <tr>
+    <td>0x80</td>
+    <td>The last segment in the template</td>
+  </tr>
+  <tr>
+    <td>0x100</td>
+    <td>Secondary alignment</td>
+  </tr>
+ <tr>
+    <td>0x200</td>
+    <td>Not passing quality controls</td>
+  </tr>
+ <tr>
+    <td>0x400</td>
+    <td>PCR or optical duplicate</td>
+  </tr>
+</table>
+
+For example, Flag 99 codes for
+<br>
+<br>
+64:first in the segment
+<br>
+<br>
+16:read reverse complemented
+<br>
+<br>
+8:second read is unmapped
+<br>
+<br>
+2:each segment is properly aligned
+<br>
+<br>
+1:paired end reads
+<br>
+<br>
+This is the only combination that gives the total of 99
+</p>
+
+<h4>Binary Alignment Map (BAM) format</h4>
+<p align="left">Binary Alignment Map (BAM) is a compressed SAM file. It is compressed using the BGZF compression method.</p>
+
+<h4>CRAM files</h4>
+
+<p align="left">CRAM files are also compressed SAM files, designed by the EBI to reduce the storage space. CRAM files compression is based on the reference the data is aligned to.
+
+<br>
+<br>
+
+Data is compressed using one of the general purpose compressors (gzip, bzip2). CRAM records are compressed using several different encoding strategies. For example, bases are reference compressed by encoding 
+base differences rather than storing the abses themselves. External reference sequences introduce the only external dependency into the CRAM format. When external reference sequences cannot be conveniently 
+used the reference sequences also can be embedded within the CRAM files. However, when embedded reference sequences are used then only those reference sequence regions are preserved in CRAM that has reads 
+aligned against them.</p>
+
+<h4>Genbank format</h4>
+<p align="left"> The Genbank format allows systematic storage of information about the sequence. An example of the genebank file can be accessed <a 
+href="https://www.ncbi.nlm.nih.gov/nuccore/X81322">here</a>;(adapted from <a href="https://www.futurelearn.com/info/courses/bacterial-genomes-bioinformatics/0/steps/47012">future learn</a>). A typical Genbank 
+file has two parts: i) annotation section which starts with the line begining with the word "<b>LOCUS</b>", and ii) the sequence which starts with the line begining 
+with "<b>ORIGIN</b>". The end of the genebank file is indicated by "//".</p>
+
+<p align="center"><img width="500" height="550" alt="logo"
+src="assets/images/logo/ngs_6.png"></p>
+
+<h4>GFF3 format</h4>
+
+<p align="left">GFF3 stands for gene feature file version 3. This is a tab-delimited file containing all the information that can be associated with a DNA or protein sequence. An example can be seen in the 
+below figure.
+
+<br>
+<br>
+
+The file contains 9 fields:
+
+<ul style="padding-left:30px">
+<li>Sequence ID</li>
+<li>Source : algorithm used to derive the feature such as prodigal, prokka, Genescan etc.</li>
+<li>Feature type : deails what the feature is (cds, mRNA)</li>
+<li>Feature start</li>
+<li>Feature stop</li>
+<li>Score : these are e-values from the algorithm used</li>
+<li>Strand</li>
+<li>Phase : describes the reading frame relative to the reference where the featire begins. It has values 0, 1 and 2 for indicating number of based from the beginning where the first codon on the feature 
+begins</li>
+<li>Attributes : provides additional information about each feature</li>
+</ul>
+
+<h4>Further reading</h4>
+
+<p>SAM format:</p>
+<ul style="padding-left:30px">
+<li><a>https://www.samformat.info/sam-format-flag</a></li>
+<li><a>http://samtools.github.io/hts-specs/SAMv1.pdf</a></li>
+</ul>
+
+<p>CRAM format:<a> https://www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/ena/documents/cram_format_1.0.1.pdf</a></p>
+
+
+<p>GFF3 format: <a>https://learn.gencore.bio.nyu.edu/ngs-file-formats/gff3-format/</a></p>
+
+
+<p>Embl file format: <a>http://scikit-bio.org/docs/0.5.3/generated/skbio.io.format.embl.html</a></p>
+
+  
+ </div>
+    
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+    
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {  
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {  
+
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+} 
+</script>
+
+</body>
+</html>
+
