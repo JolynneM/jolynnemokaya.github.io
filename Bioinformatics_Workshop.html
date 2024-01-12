@@ -8,21 +8,24 @@ layout: home
 <!DOCTYPE html>   
 <html>  
 <head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body {
   font-family: "Lato", sans-serif;
+ 
 }
+
+
   
 /* Fixed sidenav, full height */
 .sidenav {
   height: 90%;
-  width: 400px;
-  position: fixed;
+  width: 300px;
+  position: absolute;
   z-index: 1;
   top: 40;
-  left: 0;
+  right: 0;
   background-color: #ffffff00;
   overflow-x: hidden;
   padding-top: 40px;
@@ -30,7 +33,7 @@ body {
   
 /* Style the sidenav links and the dropdown button */
 .sidenav a, .dropdown-btn {
-  padding: 6px 8px 6px 16px;
+  padding: 10px 20px 10px 20px;
   text-decoration: none;
   font-size: 12px;
   color: 
@@ -39,7 +42,7 @@ body {
   border: none;
   background: none;  
   width: 100%;  
-  text-align: left;
+  text-align: right;
   cursor: pointer;  
   outline: none;
 }
@@ -47,12 +50,12 @@ body {
 /* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
   color:
-#87B1B0;
+#1e504f;
 } 
 
 /* Main content */
 .main {
-  margin-left: 200px; /* Same as the width of the sidenav */
+  margin-right: 400px; /* Same as the width of the sidenav */
   font-size: 14px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
@@ -68,20 +71,22 @@ body {
 .dropdown-container {
   display: none;
   background-color: #E5F2F0;
-  padding-left: 8px;
+  padding-left: 20px;
 }
 
 /* Optional: Style the caret down icon */
 .fa-caret-down {
-  float: right;
-  padding-right: 8px;
+  float: left;
+  padding-left: 250px;
 }
   
 /* Some media queries for responsiveness */
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
+  .sidenav a {font-size: 12px;}
 }
+
+
 </style>
 </head>
 <body>
@@ -127,11 +132,11 @@ of Genome Assemblies</a>
 
 <br>
 <p align="center"><img width="298" alt="logo"
-src="https://user-images.githubusercontent.com/120729109/215426024-d2af40a4-98d1-4d69-a603-abd77c10fd18.png"></p>
+src="assets/images/logo/BIOINFORMATICS.png"></p>
 <br>
 <p align="center">This advanced bioinformatics course was developed for the GPS and JUNO projects.</p>
 <br>
-  <p align="center">The GPS project, i.e., the <a
+  <p align="justify">The GPS project, i.e., the <a
 href="https://www.pneumogen.net/gps/">Global Pneumococcal Sequencing
 project</a> is a worldwide genomic surveillance network of
 <em>Streptococcus pneumoniae</em> which provides evidence for
@@ -142,14 +147,14 @@ worldwide. One of the core aims of the GPS and JUNO projects is to
 strengthen the capacity of our project collaborators in generating and
 analysing genomic data.</p>
   <br>
-  <p align="center">This course is aimed at researchers who have an
+  <p align="justify">This course is aimed at researchers who have an
 interest in learning how to carry out next generation sequencing (NGS)
 and analysis of bacterial genomes (i.e., <em>Streptococcus
 pneumoniae</em> and/or <em>Streptococcus agalactiae</em>). It concentrates on the application of cutting edge genomic
 techniques that are currently being implemented.</p>
 <br>
     
- <p align="center">This course was funded by <strong>The Gates
+ <p align="justify">This course was funded by <strong>The Gates
 Foundation</strong> through the GPS and JUNO projects, and it was delivered as in-person and virtual workshops in partnership with six
 institutions within four continents to >100 participants as follows: </p>
 
