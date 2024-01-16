@@ -13,11 +13,11 @@ body {
 }
 
 .sidenav {
-  height: 90%;
+  height: 100%;
   width: 400px;
   position: fixed;
   z-index: 1;
-  top: 40;
+  top: 0;
   right: 0;
   background-color: #0C6980;
   overflow-x: hidden;
@@ -54,6 +54,15 @@ body {
   right: 0px;
 }
 
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #7cc7bb;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
 .main {
   margin-right: 450px; /* Same as the width of the sidenav */
   font-size: 14px; /* Increased text to enable scrolling */
@@ -67,7 +76,7 @@ body {
 
 .dropdown-container {
   display: none;
-  background-color: #6CB0A8;
+  background-color: #7cc7bb;
   padding-left: 8px;
 }
 
@@ -86,7 +95,8 @@ body {
 <body>
 
 <br>
-<b><span style="font-size:14px;cursor:pointer;font-family:sans-serif" onclick="openNav()">&#9776; Content</span></b>
+
+<b><button class="openbtn"; style="font-size:14px;cursor:pointer;font-family:sans-serif" onclick="openNav()";>☰ Content</button></b> 
 
 
 <div id="mySidenav" class="sidenav">
@@ -154,6 +164,7 @@ of Genome Assemblies</a>
   } 
   
   </script>
+  
 
 <div class="main">   
 
